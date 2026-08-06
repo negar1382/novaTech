@@ -1,89 +1,150 @@
-/* ===========================
+/* =========================
    Profile Page
-=========================== */
+========================= */
 
-.profile-page{
+.profile-page {
+
     width:95%;
     max-width:1400px;
+
     margin:40px auto;
+
     display:flex;
+
     gap:30px;
+
     align-items:flex-start;
+
 }
 
-/* ===========================
+
+/* =========================
    Sidebar
-=========================== */
+========================= */
 
-.profile-sidebar{
+
+.profile-sidebar {
+
     width:280px;
+
     background:#0d1424;
+
     border:1px solid #1c2438;
+
     border-radius:18px;
+
     overflow:hidden;
+
     flex-shrink:0;
+
 }
 
-/* ===========================
-   User
-=========================== */
 
-.profile-user{
+
+/* =========================
+   User Info
+========================= */
+
+
+.profile-user {
+
     padding:30px 20px;
+
     text-align:center;
+
     border-bottom:1px solid #1c2438;
+
 }
 
-.profile-avatar{
+
+
+.profile-avatar {
+
     width:85px;
+
     height:85px;
+
     margin:0 auto 18px;
+
     border-radius:50%;
+
     background:#172033;
+
     display:flex;
+
+    align-items:center;
+
     justify-content:center;
-    align-items:center;
+
     color:#5b7fff;
+
     font-size:34px;
+
 }
 
-.profile-name{
+
+
+.profile-name {
+
     color:#fff;
+
     font-size:20px;
+
     margin-bottom:8px;
+
     font-weight:700;
+
 }
 
-.profile-phone{
+
+
+.profile-phone {
+
     color:#9aa6bf;
+
     font-size:14px;
+
 }
 
-/* ===========================
+
+
+/* =========================
    Menu
-=========================== */
+========================= */
 
-.profile-menu{
+
+.profile-menu {
+
     list-style:none;
+
     padding:12px;
-    margin:0;
+
 }
 
-.profile-menu-item{
+
+
+.profile-menu-item {
+
     margin-bottom:10px;
+
 }
 
-.profile-menu-item:last-child{
+
+.profile-menu-item:last-child {
+
     margin-bottom:0;
+
 }
 
-.profile-menu-item a{
+
+
+.profile-menu-item a {
 
     display:flex;
-    align-items:center;
-    gap:12px;
 
-    text-decoration:none;
+    align-items:center;
+
+    gap:12px;
 
     padding:14px 18px;
 
@@ -91,39 +152,70 @@
 
     color:#d6dcef;
 
+    text-decoration:none;
+
     transition:.3s;
+
 }
 
-.profile-menu-item a i{
+
+
+.profile-menu-item a i {
+
     width:22px;
+
     text-align:center;
+
     font-size:18px;
+
 }
 
-.profile-menu-item a:hover{
+
+
+.profile-menu-item a:hover {
+
     background:#172033;
+
     color:#6d8dff;
+
 }
 
-.profile-menu-item.active a{
+
+
+.profile-menu-item.active a {
+
     background:#2563eb;
+
     color:#fff;
+
 }
 
-.profile-menu-item.logout a:hover{
+
+
+.profile-menu-item.logout a:hover {
+
     background:#341616;
+
     color:#ff6b6b;
+
 }
 
-/* ===========================
+
+
+/* =========================
    Content
-=========================== */
+========================= */
 
-.profile-content{
+
+.profile-content {
+
     flex:1;
+
 }
 
-.content-box{
+
+
+.content-box {
 
     background:#0d1424;
 
@@ -134,36 +226,113 @@
     min-height:650px;
 
     padding:35px;
+
 }
 
-.content-box h2{
+
+
+.content-box h2 {
 
     color:#fff;
 
     margin-bottom:15px;
+
 }
 
-.content-box p{
+
+
+.content-box p {
 
     color:#b8c2d8;
 
     line-height:2;
+
 }
 
-/* ===========================
+
+
+/* =========================
    Responsive
-=========================== */
+========================= */
+
 
 @media(max-width:900px){
 
-    .profile-page{
+    .profile-page {
 
         flex-direction:column;
+
+        width:92%;
+
+        gap:20px;
+
     }
 
-    .profile-sidebar{
+
+    .profile-sidebar {
 
         width:100%;
+
+    }
+
+
+    .content-box {
+
+        padding:25px;
+
+        min-height:auto;
+
+    }
+
+}
+
+
+
+@media(max-width:600px){
+
+    .profile-page {
+
+        margin:25px auto;
+
+    }
+
+
+    .profile-user {
+
+        padding:25px 15px;
+
+    }
+
+
+    .profile-avatar {
+
+        width:75px;
+
+        height:75px;
+
+        font-size:30px;
+
+    }
+
+
+    .profile-name {
+
+        font-size:18px;
+
+    }
+
+
+    .profile-menu-item a {
+
+        padding:12px 15px;
+
+    }
+
+
+    .content-box h2 {
+
+        font-size:20px;
+
     }
 
 }

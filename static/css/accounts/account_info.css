@@ -1,11 +1,16 @@
-.account-title{
+/* =========================
+   Account Page
+========================= */
+
+.account-title {
     color:#fff;
     font-size:24px;
     margin-bottom:35px;
     font-weight:700;
 }
 
-.info-item{
+
+.info-item {
 
     display:flex;
     justify-content:space-between;
@@ -22,37 +27,52 @@
     border-radius:14px;
 
     transition:.3s;
+
 }
 
-.info-item:hover{
+
+.info-item:hover {
 
     border-color:#2563eb;
+
 }
 
-.info-item span{
+
+.info-item span {
 
     color:#94a3b8;
 
     font-size:15px;
+
 }
 
-.info-item strong{
+
+.info-item strong {
 
     color:#fff;
 
     font-size:16px;
 
     font-weight:600;
+
 }
 
-.account-actions{
+
+
+/* =========================
+   Account Actions
+========================= */
+
+.account-actions {
 
     margin-top:35px;
 
     text-align:left;
+
 }
 
-.edit-profile-btn{
+
+.edit-profile-btn {
 
     display:inline-block;
 
@@ -67,34 +87,47 @@
     border-radius:12px;
 
     transition:.3s;
+
 }
 
-.edit-profile-btn:hover{
+
+.edit-profile-btn:hover {
 
     background:#1d4ed8;
+
 }
 
 
 
-/*edit profile*/
-
-/* ===========================
+/* =========================
    Edit Profile Form
-=========================== */
+========================= */
 
-.form-group{
+
+.form-group {
+
     margin-bottom:25px;
+
 }
 
-.form-group label{
+
+.form-group label {
+
     display:block;
+
     margin-bottom:10px;
+
     color:#cbd5e1;
+
     font-size:15px;
+
     font-weight:600;
+
 }
 
-.form-control{
+
+
+.form-control {
 
     width:100%;
 
@@ -106,23 +139,33 @@
 
     padding:14px 16px;
 
-    color:#ffffff;
+    color:#fff;
 
     font-size:15px;
 
     outline:none;
 
     transition:.3s;
+
 }
 
-.form-control:focus{
+
+.form-control:focus {
 
     border-color:#2563eb;
 
     box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
 }
 
-.save-btn{
+
+
+/* =========================
+   Save Button
+========================= */
+
+
+.save-btn {
 
     border:none;
 
@@ -141,21 +184,24 @@
     font-weight:600;
 
     transition:.3s;
+
 }
 
-.save-btn:hover{
+
+.save-btn:hover {
 
     background:#1d4ed8;
+
 }
 
 
 
-/*پیام ویرایش */
-/* ===========================
+/* =========================
    Alerts
-=========================== */
+========================= */
 
-.alert{
+
+.alert {
 
     padding:15px 18px;
 
@@ -166,49 +212,130 @@
     font-size:15px;
 
     font-weight:500;
+
+    transition:opacity .5s ease, transform .5s ease;
+
 }
 
-.alert.success{
+
+.alert.success {
 
     background:#12351f;
 
     border:1px solid #22c55e;
 
     color:#bbf7d0;
+
 }
 
-.alert.error{
+
+.alert.error {
 
     background:#3b1616;
 
     border:1px solid #ef4444;
 
     color:#fecaca;
+
 }
 
-.alert.warning{
+
+.alert.warning {
 
     background:#4a360d;
 
     border:1px solid #f59e0b;
 
     color:#fde68a;
+
 }
 
-.alert.info{
+
+.alert.info {
 
     background:#132b45;
 
     border:1px solid #3b82f6;
 
     color:#bfdbfe;
+
 }
 
-.alert{
-    transition: opacity .5s ease, transform .5s ease;
-}
 
-.alert.hide{
+.alert.hide {
+
     opacity:0;
+
     transform:translateY(-10px);
+
+}
+
+
+
+/* =========================
+   Responsive
+========================= */
+
+
+@media(max-width:700px){
+
+    .account-title {
+
+        font-size:21px;
+
+        margin-bottom:25px;
+
+    }
+
+
+    .info-item {
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+        padding:16px;
+
+    }
+
+
+    .info-item span,
+    .info-item strong {
+
+        font-size:14px;
+
+    }
+
+
+    .account-actions {
+
+        text-align:center;
+
+    }
+
+
+    .edit-profile-btn {
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+
+    .save-btn {
+
+        width:100%;
+
+    }
+
+
+    .form-control {
+
+        padding:13px;
+
+    }
+
 }
