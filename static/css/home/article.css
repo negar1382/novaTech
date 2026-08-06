@@ -1,7 +1,11 @@
+/* ========================================
+   متغیرهای رنگی
+   هرجا خواستی رنگ‌بندی رو عوض کنی، فقط همین بخش رو ویرایش کن
+======================================== */
 :root {
   --page-bg: #000717;
 
-  --accent-color: #A287FE;
+  --accent-color: #A287FE;      /* رنگ خط کنار عنوان */
   --title-color: #ffffff;
   --view-all-color: #c9cdd6;
 
@@ -11,30 +15,23 @@
   --font-main: 'Vazirmatn', Tahoma, sans-serif;
 }
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-
 body {
   background: var(--page-bg);
 }
 
-
-
 /* ========================================
    کانتینر اصلی
 ======================================== */
-
 .banner-grid {
   max-width: 1440px;
   margin: 60px auto;
-  padding: 0 20px;
 }
-
 
 .banner-grid__container {
   display: flex;
@@ -42,12 +39,9 @@ body {
   gap: 18px;
 }
 
-
-
 /* ========================================
-   هدر
+   هدر: عنوان راست / مشاهده همه چپ
 ======================================== */
-
 .banner-grid__header {
   display: flex;
   align-items: center;
@@ -56,7 +50,6 @@ body {
   padding: 0 6px;
 }
 
-
 .banner-grid__title-wrap {
   display: flex;
   align-items: center;
@@ -64,13 +57,11 @@ body {
   flex-direction: row-reverse;
 }
 
-
 .banner-grid__title {
   color: var(--title-color);
   font-size: 19px;
   font-weight: 700;
 }
-
 
 .banner-grid__title-bar {
   width: 4px;
@@ -79,196 +70,39 @@ body {
   border-radius: 2px;
 }
 
-
 .banner-grid__view-all {
   color: var(--view-all-color);
   font-size: 13.5px;
   text-decoration: none;
 }
 
-
 .banner-grid__view-all:hover {
   color: var(--title-color);
 }
 
-
-
 /* ========================================
-   گرید بنرها
+   گرید ۴ ستونه‌ی بنرها
 ======================================== */
-
 .banner-grid__list {
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-
 }
 
-
 .banner-item {
-
   display: block;
   border-radius: var(--banner-radius);
   overflow: hidden;
   border: 1px solid var(--banner-border);
   line-height: 0;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
-
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-
 
 .banner-item:hover {
-
   transform: translateY(-3px);
   opacity: 0.92;
-
 }
-
 
 .banner-item img {
-
   width: 100%;
-  height: auto;
-  display: block;
-
-}
-
-
-
-/* ========================================
-   Tablet
-======================================== */
-
-@media (max-width: 992px) {
-
-
-  .banner-grid {
-
-    margin: 45px auto;
-    padding: 0 18px;
-
-  }
-
-
-  .banner-grid__list {
-
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-
-  }
-
-
-}
-
-
-
-/* ========================================
-   Mobile
-======================================== */
-
-@media (max-width: 768px) {
-
-
-  .banner-grid {
-
-    margin: 35px auto;
-
-  }
-
-
-  .banner-grid__container {
-
-    gap: 15px;
-
-  }
-
-
-  .banner-grid__title {
-
-    font-size: 17px;
-
-  }
-
-
-  .banner-grid__title-bar {
-
-    height: 18px;
-
-  }
-
-
-  .banner-grid__view-all {
-
-    font-size: 12px;
-
-  }
-
-
-  .banner-grid__list {
-
-    grid-template-columns: 1fr;
-    gap: 14px;
-
-  }
-
-
-}
-
-
-
-/* ========================================
-   Small Mobile
-======================================== */
-
-@media (max-width: 480px) {
-
-
-  .banner-grid {
-
-    padding: 0 12px;
-    margin: 25px auto;
-
-  }
-
-
-  .banner-grid__header {
-
-    padding: 0;
-
-  }
-
-
-  .banner-grid__title-wrap {
-
-    gap: 8px;
-
-  }
-
-
-  .banner-grid__title {
-
-    font-size: 15px;
-
-  }
-
-
-  .banner-grid__title-bar {
-
-    width: 3px;
-    height: 16px;
-
-  }
-
-
-  .banner-item {
-
-    border-radius: 10px;
-
-  }
-
-
 }

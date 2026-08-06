@@ -1,356 +1,263 @@
 /* ========================================
-   Responsive
+   متغیرهای رنگی
+   هرجا خواستی رنگ‌بندی رو عوض کنی، فقط همین بخش رو ویرایش کن
 ======================================== */
+.new-arrivals {
+  --page-bg: #000717;
 
+  --accent-color: #A287FE;      /* رنگ خط کنار عنوان */
+  --title-color: #ffffff;
+  --view-all-color: #c9cdd6;
 
-/* لپ تاپ و تبلت بزرگ */
-@media (max-width: 1200px) {
+  --card-bg: #0d1424;
+  --card-radius: 14px;
+  --card-title-color:  #ffffff;
+  --card-price-color: #8b93a7;
+  --card-price-strong: #ffffff;
 
+  --btn-bg: #4d179a;
+  --btn-text: #d9f5e6;
+  --btn-hover-bg: #2f0d68;
 
-    .new-arrivals {
+  --arrow-bg: #ffffff;
+  --arrow-icon: #1a1a1a;
 
-        padding:0 20px;
-
-    }
-
-
-    .new-arrivals__container {
-
-        margin-top:45px;
-
-    }
-
-
-    .na-card {
-
-        width:220px;
-
-        padding:16px;
-
-    }
-
-
-    .na-card__image {
-
-        height:140px;
-
-    }
-
-
+  --font-main: 'Vazirmatn', Tahoma, sans-serif;
 }
 
-
-
-/* تبلت */
-@media (max-width: 992px) {
-
-
-    .new-arrivals__header {
-
-        padding:0;
-
-    }
-
-
-    .new-arrivals__title {
-
-        font-size:17px;
-
-    }
-
-
-    .new-arrivals__title-bar {
-
-        height:18px;
-
-    }
-
-
-    .new-arrivals__list {
-
-        gap:14px;
-
-    }
-
-
-    .na-card {
-
-        width:210px;
-
-        border-radius:12px;
-
-    }
-
-
-    .na-card__image {
-
-        height:135px;
-
-    }
-
-
-    .na-card__title {
-
-        font-size:14px;
-
-    }
-
-
-    .carousel-arrow {
-
-
-        width:36px;
-
-        height:36px;
-
-
-    }
-
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
-
-/* موبایل */
-@media (max-width:768px) {
-
-
-    .new-arrivals {
-
-        padding:0 12px;
-
-    }
-
-
-
-    .new-arrivals__container {
-
-        margin-top:35px;
-
-        gap:15px;
-
-    }
-
-
-
-    .new-arrivals__title {
-
-        font-size:16px;
-
-    }
-
-
-
-    .new-arrivals__view-all {
-
-        font-size:12px;
-
-    }
-
-
-
-    .new-arrivals__title-wrap {
-
-        gap:8px;
-
-    }
-
-
-
-    .new-arrivals__title-bar {
-
-        width:3px;
-
-        height:17px;
-
-    }
-
-
-
-    .new-arrivals__list {
-
-        gap:12px;
-
-        padding:4px 0;
-
-    }
-
-
-
-    .na-card {
-
-
-        width:180px;
-
-        padding:14px;
-
-        border-radius:12px;
-
-
-    }
-
-
-
-    .na-card__image {
-
-        height:120px;
-
-    }
-
-
-
-    .na-card__title {
-
-
-        font-size:13px;
-
-
-    }
-
-
-
-    .na-card__price {
-
-
-        font-size:15px;
-
-
-    }
-
-
-
-    .na-card__old-price {
-
-
-        font-size:11px;
-
-
-    }
-
-
-
-    .na-card__discount {
-
-
-        font-size:10px;
-
-        padding:2px 6px;
-
-
-    }
-
-
-
-    .na-card__btn {
-
-
-        font-size:12px;
-
-        padding:8px 10px;
-
-
-    }
-
-
-
-
-    .carousel-arrow {
-
-
-        width:32px;
-
-        height:32px;
-
-
-    }
-
-
-
-    .carousel-arrow--right {
-
-
-        right:-5px;
-
-
-    }
-
-
-
-    .carousel-arrow--left {
-
-
-        left:-5px;
-
-
-    }
-
-
+body {
+  /*font-family: var(--font-main);*/
+  background: #000717;
 }
 
+/* ========================================
+   کانتینر اصلی
+======================================== */
+.new-arrivals {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 
+.new-arrivals__container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top:60px;
+}
 
+/* ========================================
+   هدر: عنوان راست / مشاهده همه چپ
+======================================== */
+.new-arrivals__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse; /* عنوان سمت راست، مشاهده همه سمت چپ */
+  padding: 0 6px;
+}
 
-/* موبایل کوچک */
-@media (max-width:480px) {
+.new-arrivals__title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+}
 
+.new-arrivals__title {
+  color: var(--title-color);
+  font-size: 19px;
+  font-weight: 700;
+}
 
-    .new-arrivals {
+.new-arrivals__title-bar {
+  width: 4px;
+  height: 20px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
 
-        padding:0 10px;
+.new-arrivals__view-all {
+  color: var(--view-all-color);
+  font-size: 13.5px;
+  text-decoration: none;
+}
 
-    }
+.new-arrivals__view-all:hover {
+  color: var(--title-color);
+}
 
+/* ========================================
+   کاروسل و فلش‌ها
+======================================== */
+.new-arrivals__carousel {
+  position: relative;
+}
 
+.new-arrivals__list {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 4px 2px;
+}
 
-    .na-card {
+.new-arrivals__list::-webkit-scrollbar {
+  display: none;
+}
 
+.carousel-arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--arrow-bg);
+  color: var(--arrow-icon);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
 
-        width:165px;
+.carousel-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+}
 
-        padding:12px;
+.carousel-arrow--right {
+  right: -8px;
+}
 
+.carousel-arrow--left {
+  left: -8px;
+}
 
-    }
+.carousel-arrow.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
+/* ========================================
+   کارت محصول
+======================================== */
+.na-card {
+  flex: 0 0 auto;
+  width: 240px;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
+.na-card__image {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .na-card__image {
+.na-card__image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 
+.na-card__title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--card-title-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-        height:105px;
+.na-card__price {
+  font-size: 13px;
+  color: var(--card-price-color);
+}
 
+.na-card__price strong {
+  color: var(--card-price-strong);
+  font-weight: 700;
+}
 
-    }
+.na-card__btn{
+    display: block;
+    text-align: center;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: auto;   /* این خط را اضافه کن */
+    transition: background 0.15s ease;
+}
 
+.na-card__btn:hover {
+  background: var(--btn-hover-bg);
+}
 
+.na-card__price-box{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
 
-    .na-card__title {
+.na-card__old-price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
+.na-card__old-price{
+    color:#9ca3af;
+    font-size:13px;
+    text-decoration:line-through;
+}
 
-        font-size:12.5px;
+.na-card__discount{
+    background:#ee2043;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    padding:2px 8px;
+    border-radius:20px;
+}
 
+.na-card__price{
+    color:#ff4d6d;
+    font-size:17px;
+    font-weight:800;
+    margin-top: auto;
+}
 
-    }
+/* ========================================
+   واکنش‌گرا (ریسپانسیو)
+======================================== */
+@media (max-width: 600px) {
+  .na-card {
+    width: 200px;
+  }
 
-
-
-    .na-card__price {
-
-
-        font-size:14px;
-
-
-    }
-
-
-
-    .new-arrivals__list {
-
-
-        gap:10px;
-
-
-    }
-
-
+  .carousel-arrow {
+    width: 34px;
+    height: 34px;
+  }
 }

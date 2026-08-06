@@ -2,22 +2,31 @@
    Order Success
 ========================= */
 
-.success-page {
+
+.success-page{
+
+
     min-height:80vh;
+
     background:#000717;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    padding:50px 20px;
+
+    padding:50px 0;
+
+
 }
 
 
-/* Card */
 
-.success-card {
+.success-card{
+
 
     width:450px;
-    max-width:100%;
 
     background:#0d1424;
 
@@ -31,12 +40,14 @@
 
     color:white;
 
+
 }
 
 
-/* Icon */
 
-.success-icon {
+
+.success-icon{
+
 
     font-size:70px;
 
@@ -44,37 +55,39 @@
 
     margin-bottom:20px;
 
+
 }
 
 
-/* Title */
 
-.success-card h1 {
+
+.success-card h1{
+
 
     font-size:26px;
 
     margin-bottom:15px;
 
+
 }
 
 
-/* Description */
 
-.success-text {
+.success-text{
+
 
     color:#cbd5e1;
 
     margin-bottom:30px;
 
-    line-height:2;
 
 }
 
 
 
-/* Order Info */
 
-.order-info {
+.order-info{
+
 
     background:#111a2e;
 
@@ -84,28 +97,29 @@
 
     margin-bottom:30px;
 
+
 }
 
 
-.info-row {
+
+
+.info-row{
+
 
     display:flex;
 
     justify-content:space-between;
 
-    align-items:center;
-
-    gap:15px;
-
     padding:12px 0;
 
     border-bottom:1px solid #334155;
+
 
 }
 
 
 
-.info-row:last-child {
+.info-row:last-child{
 
     border:none;
 
@@ -113,7 +127,8 @@
 
 
 
-.info-row span {
+
+.info-row span{
 
     color:#cbd5e1;
 
@@ -121,7 +136,7 @@
 
 
 
-.info-row strong {
+.info-row strong{
 
     color:white;
 
@@ -129,9 +144,10 @@
 
 
 
-/* Buttons */
 
-.success-actions {
+
+.success-actions{
+
 
     display:flex;
 
@@ -139,14 +155,15 @@
 
     gap:15px;
 
+
 }
 
 
 
-.primary-btn,
-.secondary-btn {
 
-    width:100%;
+.primary-btn,
+.secondary-btn{
+
 
     padding:14px;
 
@@ -156,95 +173,47 @@
 
     transition:.3s;
 
-    font-size:15px;
-
-    text-align:center;
-
 }
 
 
 
-.primary-btn {
+.primary-btn{
+
 
     background:#6d5ef7;
 
     color:white;
 
+
 }
 
 
 
-.primary-btn:hover {
+.primary-btn:hover{
+
 
     background:#8b7fff;
 
+
 }
 
 
 
-.secondary-btn {
+.secondary-btn{
+
 
     border:1px solid #334155;
 
     color:#cbd5e1;
 
+
 }
 
 
 
-.secondary-btn:hover {
+.secondary-btn:hover{
+
 
     background:#111a2e;
-
-}
-
-
-
-/* =========================
-   Responsive
-========================= */
-
-
-@media(max-width:600px){
-
-    .success-page {
-
-        padding:30px 15px;
-
-    }
-
-
-    .success-card {
-
-        padding:30px 20px;
-
-        border-radius:16px;
-
-    }
-
-
-    .success-icon {
-
-        font-size:55px;
-
-    }
-
-
-    .success-card h1 {
-
-        font-size:22px;
-
-    }
-
-
-    .info-row {
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:6px;
-
-    }
 
 }

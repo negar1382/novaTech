@@ -1,2448 +1,7 @@
-/* ========================================
-   New Arrivals
+/* =====================================================
+   Orders Pages
    NovaTech
-======================================== */
-
-.new-arrivals {
-    --page-bg:#000717;
-    --accent-color:#A287FE;
-    --title-color:#ffffff;
-    --view-all-color:#c9cdd6;
-
-    --card-bg:#0d1424;
-    --card-radius:14px;
-    --card-title-color:#ffffff;
-    --card-price-color:#8b93a7;
-    --card-price-strong:#ffffff;
-
-    --btn-bg:#4d179a;
-    --btn-text:#d9f5e6;
-    --btn-hover-bg:#2f0d68;
-
-    --arrow-bg:#ffffff;
-    --arrow-icon:#1a1a1a;
-
-    --font-main:'Vazirmatn',Tahoma,sans-serif;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    background:#000717;
-}
-
-.new-arrivals{
-    width:100%;
-    max-width:1440px;
-    margin:0 auto;
-}
-
-.new-arrivals__container{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    margin-top:60px;
-}
-
-
-/* ========================================
-   Header
-======================================== */
-
-.new-arrivals__header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    flex-direction:row-reverse;
-    padding:0 6px;
-}
-
-.new-arrivals__title-wrap{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex-direction:row-reverse;
-}
-
-.new-arrivals__title{
-    color:var(--title-color);
-    font-size:19px;
-    font-weight:700;
-}
-
-.new-arrivals__title-bar{
-    width:4px;
-    height:20px;
-    background:var(--accent-color);
-    border-radius:2px;
-}
-
-.new-arrivals__view-all{
-    color:var(--view-all-color);
-    font-size:13.5px;
-    text-decoration:none;
-    transition:.2s;
-}
-
-.new-arrivals__view-all:hover{
-    color:#fff;
-}
-
-
-/* ========================================
-   Carousel
-======================================== */
-
-.new-arrivals__carousel{
-    position:relative;
-    width:100%;
-}
-
-.new-arrivals__list{
-    width:100%;
-    display:flex;
-    flex-direction:row;
-    gap:16px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    scrollbar-width:none;
-    padding:4px 2px;
-}
-
-.new-arrivals__list::-webkit-scrollbar{
-    display:none;
-}
-
-
-/* ========================================
-   Carousel Arrows
-======================================== */
-
-.carousel-arrow{
-    position:absolute;
-    top:45%;
-    transform:translateY(-50%);
-
-    width:40px;
-    height:40px;
-
-    border:none;
-    border-radius:50%;
-
-    background:var(--arrow-bg);
-    color:var(--arrow-icon);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    cursor:pointer;
-    z-index:5;
-
-    box-shadow:0 4px 14px rgba(0,0,0,.45);
-
-    transition:.2s;
-}
-
-.carousel-arrow:hover{
-    transform:translateY(-50%) scale(1.08);
-}
-
-.carousel-arrow--right{
-    right:-8px;
-}
-
-.carousel-arrow--left{
-    left:-8px;
-}
-
-.carousel-arrow.is-hidden{
-    opacity:0;
-    pointer-events:none;
-}
-
-/* ========================================
-   Product Card
-======================================== */
-
-.na-card{
-    flex:0 0 auto;
-    width:240px;
-
-    background:var(--card-bg);
-    border-radius:var(--card-radius);
-
-    padding:18px;
-
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-
-    transition:.25s;
-}
-
-.na-card:hover{
-    transform:translateY(-4px);
-}
-
-
-.na-card__image{
-    width:100%;
-    height:150px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-
-.na-card__image img{
-    max-width:100%;
-    max-height:100%;
-    object-fit:contain;
-}
-
-
-.na-card__title{
-    color:var(--card-title-color);
-
-    font-size:14.5px;
-    font-weight:700;
-
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-
-/* ========================================
-   Price
-======================================== */
-
-.na-card__price-box{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-}
-
-
-.na-card__old-price-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-
-.na-card__old-price{
-    color:#9ca3af;
-
-    font-size:13px;
-
-    text-decoration:line-through;
-}
-
-
-.na-card__discount{
-    background:#ee2043;
-
-    color:#fff;
-
-    font-size:11px;
-    font-weight:700;
-
-    padding:2px 8px;
-
-    border-radius:20px;
-}
-
-
-.na-card__price{
-    display:flex;
-    align-items:center;
-    gap:5px;
-
-    color:#ff4d6d;
-
-    font-size:17px;
-    font-weight:800;
-
-    margin-top:4px;
-}
-
-
-.na-card__price strong{
-    color:#ff4d6d;
-}
-
-
-/* ========================================
-   Button
-======================================== */
-
-.na-card__btn{
-
-    display:block;
-
-    width:100%;
-
-    text-align:center;
-
-    background:var(--btn-bg);
-
-    color:var(--btn-text);
-
-    text-decoration:none;
-
-    font-size:13.5px;
-
-    font-weight:600;
-
-    padding:10px 12px;
-
-    border-radius:8px;
-
-    margin-top:auto;
-
-    transition:.2s;
-}
-
-
-.na-card__btn:hover{
-
-    background:var(--btn-hover-bg);
-
-}
-
-
-/* ========================================
-   Responsive
-======================================== */
-
-
-/* Tablet */
-
-@media(max-width:1024px){
-
-    .new-arrivals{
-        padding:0 20px;
-    }
-
-
-    .na-card{
-        width:220px;
-    }
-
-
-    .na-card__image{
-        height:140px;
-    }
-
-}
-
-
-/* Mobile */
-
-@media(max-width:600px){
-
-
-    .new-arrivals__container{
-
-        margin-top:35px;
-
-    }
-
-
-    .new-arrivals__header{
-
-        padding:0;
-
-    }
-
-
-    .new-arrivals__title{
-
-        font-size:17px;
-
-    }
-
-
-    .new-arrivals__view-all{
-
-        font-size:12px;
-
-    }
-
-
-    .new-arrivals__list{
-
-        gap:12px;
-
-    }
-
-
-    .na-card{
-
-        width:185px;
-
-        padding:14px;
-
-        border-radius:12px;
-
-    }
-
-
-    .na-card__image{
-
-        height:120px;
-
-    }
-
-
-    .na-card__title{
-
-        font-size:13px;
-
-    }
-
-
-    .na-card__price{
-
-        font-size:15px;
-
-    }
-
-
-    .na-card__btn{
-
-        font-size:12px;
-
-        padding:9px;
-
-    }
-
-
-    .carousel-arrow{
-
-        width:32px;
-
-        height:32px;
-
-    }
-
-
-    .carousel-arrow--right{
-
-        right:-5px;
-
-    }
-
-
-    .carousel-arrow--left{
-
-        left:-5px;
-
-    }
-
-}
-
-
-/* Small Mobile */
-
-@media(max-width:380px){
-
-
-    .na-card{
-
-        width:165px;
-
-    }
-
-
-    .na-card__image{
-
-        height:105px;
-
-    }
-
-
-}
-
-/* ========================================
-   Product List
-   NovaTech
-======================================== */
-
-:root{
-    --bg-color:#0b1120;
-    --card-bg:#111827;
-    --card-hover:#1f293d;
-
-    --text-main:#ffffff;
-    --text-muted:#9ca3af;
-    --text-sub:#6b7280;
-
-    --border-color:#1f2937;
-
-    --accent-red:#ef4444;
-
-    --badge-bg:#1d3326;
-    --badge-text:#4ade80;
-
-    --radius-main:16px;
-}
-
-
-.product-list-page{
-    width:100%;
-    background:var(--bg-color);
-    min-height:100vh;
-    padding:40px 0;
-}
-
-
-.container{
-
-    width:90%;
-
-    max-width:1200px;
-
-    margin:40px auto 0;
-
-}
-
-
-
-/* ========================================
-   Title
-======================================== */
-
-
-.page-title{
-
-    font-size:24px;
-
-    font-weight:700;
-
-    color:var(--text-main);
-
-    margin-bottom:24px;
-
-}
-
-
-
-/* ========================================
-   Products List
-======================================== */
-
-
-.products-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:16px;
-
-}
-
-
-
-/* ========================================
-   Product Card
-======================================== */
-
-
-.product-card{
-
-    width:100%;
-
-    background:var(--card-bg);
-
-    border-radius:var(--radius-main);
-
-    border:1px solid rgba(255,255,255,.03);
-
-    padding:20px 28px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    color:inherit;
-
-    text-decoration:none;
-
-    transition:.25s;
-
-}
-
-
-
-.product-card:hover{
-
-    background:var(--card-hover);
-
-    transform:translateY(-2px);
-
-}
-
-
-
-/* ========================================
-   Main Product Info
-======================================== */
-
-
-.product-main-info{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
-
-    flex:2;
-
-    min-width:0;
-
-}
-
-
-
-.product-image-box{
-
-    width:120px;
-
-    height:120px;
-
-    background:#fff;
-
-    border-radius:12px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    overflow:hidden;
-
-    flex-shrink:0;
-
-}
-
-
-
-.product-image-box img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    padding:6px;
-
-}
-
-
-
-/* ========================================
-   Product Details
-======================================== */
-
-
-.product-details{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:7px;
-
-    min-width:0;
-
-}
-
-
-
-.discount-pill-badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:5px;
-
-    background:var(--badge-bg);
-
-    color:var(--badge-text);
-
-    padding:3px 12px;
-
-    border-radius:20px;
-
-    font-size:12px;
-
-    font-weight:600;
-
-}
-
-
-
-.discount-pill-badge::before{
-
-    content:"◆";
-
-    font-size:10px;
-
-}
-
-
-
-.product-title{
-
-    color:var(--text-main);
-
-    font-size:17px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    max-width:300px;
-
-}
-
-
-
-.product-subtitle{
-
-    color:var(--text-sub);
-
-    font-size:14px;
-
-}
-
-
-
-/* ========================================
-   Middle Info Columns
-======================================== */
-
-
-.info-col{
-
-    flex:1;
-
-    color:var(--text-muted);
-
-    font-size:14px;
-
-    text-align:center;
-
-}
-
-/* ========================================
-   Price Section
-======================================== */
-
-.price-section{
-
-    flex:1.2;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    justify-content:center;
-
-    gap:6px;
-
-}
-
-
-.price-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-}
-
-
-
-.current-price{
-
-    color:var(--text-main);
-
-    font-size:21px;
-
-    font-weight:800;
-
-    letter-spacing:-.5px;
-
-}
-
-
-.currency{
-
-    color:var(--text-sub);
-
-    font-size:13px;
-
-}
-
-
-
-.old-price-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-size:14px;
-
-}
-
-
-
-.old-price{
-
-    color:var(--text-sub);
-
-    text-decoration:line-through;
-
-}
-
-
-
-.discount-badge{
-
-    color:var(--accent-red);
-
-    font-size:14px;
-
-    font-weight:700;
-
-}
-
-
-
-/* ========================================
-   Sorting
-======================================== */
-
-
-.sort-bar{
-
-    width:100%;
-
-    display:flex;
-
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:15px;
-
-    margin-bottom:30px;
-
-    padding:18px 22px;
-
-    background:#0d1424;
-
-    border:1px solid #1c2438;
-
-    border-radius:14px;
-
-}
-
-
-
-.sort-title{
-
-    color:#fff;
-
-    font-weight:700;
-
-}
-
-
-
-.sort-link{
-
-    text-decoration:none;
-
-    color:#b8c2d1;
-
-    padding:8px 16px;
-
-    border-radius:8px;
-
-    transition:.25s;
-
-}
-
-
-
-.sort-link:hover{
-
-    background:#1d2942;
-
-    color:#fff;
-
-}
-
-
-
-.sort-link.active{
-
-    background:#6d5ef7;
-
-    color:#fff;
-
-}
-
-
-
-/* ========================================
-   Pagination
-======================================== */
-
-
-.pagination-wrapper{
-
-    display:flex;
-
-    justify-content:center;
-
-    margin:35px 0 15px;
-
-}
-
-
-
-.pagination{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    list-style:none;
-
-}
-
-
-
-.pagination li .page-link{
-
-    min-width:40px;
-
-    height:40px;
-
-    padding:0 12px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:8px;
-
-    background:#1e1e2d;
-
-    border:1px solid #2b2b40;
-
-    color:#a2a3b7;
-
-    text-decoration:none;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    transition:.25s;
-
-}
-
-
-
-.pagination li a.page-link:hover{
-
-    background:#6c5ce7;
-
-    color:#fff;
-
-    transform:translateY(-2px);
-
-}
-
-
-
-.pagination li.active .page-link{
-
-    background:#6c5ce7;
-
-    color:#fff;
-
-    border-color:#6c5ce7;
-
-}
-
-
-
-.pagination li.disabled .page-link{
-
-    background:#181824;
-
-    color:#4a4a65;
-
-    cursor:not-allowed;
-
-}
-
-
-
-.pagination li .dots{
-
-    background:transparent;
-
-    border:none;
-
-    letter-spacing:2px;
-
-}
-
-
-
-/* ========================================
-   Responsive
-======================================== */
-
-
-/* Tablet */
-
-@media(max-width:1000px){
-
-
-    .container{
-
-        width:94%;
-
-        margin-top:30px;
-
-    }
-
-
-    .product-card{
-
-        flex-wrap:wrap;
-
-    }
-
-
-    .product-main-info{
-
-        flex:100%;
-
-    }
-
-
-    .info-col{
-
-        flex:1;
-
-    }
-
-
-    .price-section{
-
-        flex:1;
-
-    }
-
-}
-
-
-
-/* Mobile */
-
-
-@media(max-width:700px){
-
-
-    .container{
-
-        width:94%;
-
-    }
-
-
-    .page-title{
-
-        font-size:20px;
-
-    }
-
-
-    .product-card{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        padding:18px;
-
-        gap:18px;
-
-    }
-
-
-    .product-main-info{
-
-        width:100%;
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:15px;
-
-    }
-
-
-    .product-image-box{
-
-        width:100%;
-
-        height:200px;
-
-    }
-
-
-    .product-details{
-
-        width:100%;
-
-    }
-
-
-    .product-title{
-
-        max-width:100%;
-
-        white-space:normal;
-
-        font-size:15px;
-
-    }
-
-
-    .info-col{
-
-        width:100%;
-
-        text-align:right;
-
-        background:#11192d;
-
-        padding:12px;
-
-        border-radius:10px;
-
-    }
-
-
-    .price-section{
-
-        width:100%;
-
-    }
-
-
-    .current-price{
-
-        font-size:18px;
-
-    }
-
-
-    .sort-bar{
-
-        padding:15px;
-
-        gap:10px;
-
-    }
-
-
-    .sort-link{
-
-        font-size:13px;
-
-        padding:7px 12px;
-
-    }
-
-
-    .pagination{
-
-        gap:5px;
-
-    }
-
-
-    .pagination li .page-link{
-
-        min-width:34px;
-
-        height:34px;
-
-        padding:0 8px;
-
-        font-size:13px;
-
-    }
-
-}
-
-
-
-/* Small Mobile */
-
-@media(max-width:400px){
-
-
-    .product-image-box{
-
-        height:160px;
-
-    }
-
-
-    .sort-bar{
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-    }
-
-
-    .pagination li .page-link{
-
-        min-width:30px;
-
-    }
-
-}
-
-/* ========================================
-   Amazing Deals
-   NovaTech
-======================================== */
-
-.amazing-deals{
-
-    --deal-bg-start:#f0184f;
-    --deal-bg-end:#c5123f;
-
-    --deal-radius:22px;
-
-    --card-bg:#0d1424;
-    --card-border:#1c2438;
-
-    --text-white:#ffffff;
-    --text-dark:#e5e7eb;
-    --text-gray:#8b93a7;
-
-    --price-color:#ff4d6d;
-
-    --discount-badge-bg:#ee2043;
-    --discount-badge-text:#ffffff;
-
-    --btn-bg:#ffffff;
-    --btn-text:#d81b4a;
-
-    --timer-box-bg:rgba(255,255,255,.16);
-    --timer-text:#ffffff;
-
-    --scroll-arrow-bg:#0d1424;
-    --scroll-arrow-icon:#ff4d6d;
-
-    --font-main:'Vazirmatn',Tahoma,sans-serif;
-}
-
-
-*{
-
-    box-sizing:border-box;
-
-    margin:0;
-
-    padding:0;
-
-}
-
-
-body{
-
-    background:#000717;
-
-}
-
-
-/* ========================================
-   Container
-======================================== */
-
-
-.amazing-deals{
-
-    width:100%;
-
-    max-width:1440px;
-
-    margin:0 auto;
-
-}
-
-
-.deals-container{
-
-    width:100%;
-
-    min-height:300px;
-
-    display:flex;
-
-    align-items:stretch;
-
-    overflow:hidden;
-
-    border-radius:var(--deal-radius);
-
-    background:linear-gradient(
-        120deg,
-        var(--deal-bg-start),
-        var(--deal-bg-end)
-    );
-
-}
-
-
-
-/* ========================================
-   Deals Info Panel
-======================================== */
-
-
-.deals-info{
-
-    flex:0 0 220px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:18px;
-
-    padding:24px 20px;
-
-    text-align:center;
-
-}
-
-
-.deals-info__top{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-
-.discount-icon{
-
-    width:46px;
-
-    height:46px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-
-    border:2px solid rgba(255,255,255,.7);
-
-    border-radius:50%;
-
-
-    color:#fff;
-
-    font-size:18px;
-
-    font-weight:700;
-
-}
-
-
-
-.deals-title{
-
-    color:#fff;
-
-    font-size:22px;
-
-    font-weight:800;
-
-}
-
-
-
-/* ========================================
-   Countdown
-======================================== */
-
-
-.countdown{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    direction:ltr;
-
-}
-
-
-.countdown .time-box{
-
-    min-width:34px;
-
-    padding:6px 4px;
-
-    border-radius:8px;
-
-    background:var(--timer-box-bg);
-
-    color:var(--timer-text);
-
-    text-align:center;
-
-    font-size:16px;
-
-    font-weight:700;
-
-}
-
-
-.countdown .colon{
-
-    color:#fff;
-
-    font-weight:700;
-
-}
-
-
-
-/* ========================================
-   View Button
-======================================== */
-
-
-.view-all-btn{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-
-    background:var(--btn-bg);
-
-    color:var(--btn-text);
-
-
-    text-decoration:none;
-
-    font-size:14px;
-
-    font-weight:700;
-
-
-    padding:10px 18px;
-
-    border-radius:30px;
-
-
-    transition:.2s;
-
-}
-
-
-.view-all-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 6px 14px rgba(0,0,0,.15);
-
-}
-
-
-.view-all-btn__arrow{
-
-    transform:scaleX(-1);
-
-}
-
-
-
-/* ========================================
-   Products Wrapper
-======================================== */
-
-
-.products-scroll-wrapper{
-
-    position:relative;
-
-    flex:1;
-
-    background:var(--card-bg);
-
-    border-radius:var(--deal-radius) 0 0 var(--deal-radius);
-
-    overflow:hidden;
-
-}
-
-
-.products-list{
-
-    height:100%;
-
-    display:flex;
-
-    flex-direction:row;
-
-    overflow-x:auto;
-
-    scroll-behavior:smooth;
-
-    scrollbar-width:none;
-
-}
-
-
-.products-list::-webkit-scrollbar{
-
-    display:none;
-
-}
-
-/* ========================================
-   Product Card
-======================================== */
-
-.product-card{
-
-    flex:0 0 auto;
-
-    width:230px;
-
-    padding:22px 18px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-    border-left:1px solid var(--card-border);
-
-}
-
-
-
-.product-card:first-child{
-
-    border-right:1px solid var(--card-border);
-
-    border-left:none;
-
-}
-
-
-
-/* ========================================
-   Product Image
-======================================== */
-
-
-.product-card__image{
-
-    width:100%;
-
-    height:150px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-}
-
-
-
-.product-card__image img{
-
-    max-width:100%;
-
-    max-height:100%;
-
-    object-fit:contain;
-
-}
-
-
-
-/* ========================================
-   Product Title
-======================================== */
-
-
-.product-card__title{
-
-    color:var(--text-dark);
-
-    font-size:13.5px;
-
-    font-weight:500;
-
-    line-height:1.6;
-
-
-    display:-webkit-box;
-
-    -webkit-line-clamp:2;
-
-    -webkit-box-orient:vertical;
-
-    overflow:hidden;
-
-
-    min-height:42px;
-
-}
-
-
-
-.product-card__title a{
-
-    cursor:pointer;
-
-}
-
-
-
-/* ========================================
-   Price
-======================================== */
-
-
-.product-card__price-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    min-height:22px;
-
-}
-
-
-
-.product-card__old-price{
-
-    color:var(--text-gray);
-
-    font-size:12.5px;
-
-    text-decoration:line-through;
-
-}
-
-
-
-.product-card__discount{
-
-    background:var(--discount-badge-bg);
-
-    color:var(--discount-badge-text);
-
-
-    font-size:11.5px;
-
-    font-weight:700;
-
-
-    padding:2px 8px;
-
-    border-radius:20px;
-
-}
-
-
-
-.product-card__discount--hidden{
-
-    visibility:hidden;
-
-}
-
-
-
-.product-card__price{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:5px;
-
-
-    color:var(--price-color);
-
-    font-size:16px;
-
-    font-weight:800;
-
-}
-
-
-
-.toman-icon{
-
-    flex-shrink:0;
-
-}
-
-
-
-.price-unit{
-
-    font-size:12px;
-
-    font-weight:500;
-
-}
-
-
-
-/* ========================================
-   Scroll Arrow
-======================================== */
-
-
-.scroll-arrow{
-
-    position:absolute;
-
-    top:50%;
-
-    left:10px;
-
-
-    transform:translateY(-50%);
-
-
-    width:40px;
-
-    height:40px;
-
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-
-    border:none;
-
-    border-radius:50%;
-
-
-    background:var(--scroll-arrow-bg);
-
-    color:var(--scroll-arrow-icon);
-
-
-    border:1px solid var(--card-border);
-
-
-    cursor:pointer;
-
-    z-index:5;
-
-
-    box-shadow:0 4px 14px rgba(0,0,0,.5);
-
-    transition:.2s;
-
-}
-
-
-
-.scroll-arrow:hover{
-
-    transform:translateY(-50%) scale(1.08);
-
-}
-
-
-
-.scroll-arrow.is-hidden{
-
-    opacity:0;
-
-    pointer-events:none;
-
-}
-
-
-
-/* ========================================
-   Responsive Tablet
-======================================== */
-
-
-@media(max-width:1000px){
-
-
-    .amazing-deals{
-
-        padding:0 20px;
-
-    }
-
-
-    .deals-container{
-
-        min-height:auto;
-
-    }
-
-
-    .deals-info{
-
-        flex:0 0 200px;
-
-    }
-
-
-    .product-card{
-
-        width:210px;
-
-    }
-
-
-}
-
-
-
-/* ========================================
-   Responsive Mobile
-======================================== */
-
-
-@media(max-width:750px){
-
-
-    .deals-container{
-
-        flex-direction:column;
-
-    }
-
-
-    .deals-info{
-
-        width:100%;
-
-        flex:none;
-
-
-        flex-direction:row;
-
-        justify-content:space-between;
-
-        padding:16px;
-
-    }
-
-
-    .deals-info__top{
-
-        flex-direction:row;
-
-    }
-
-
-    .deals-title{
-
-        font-size:18px;
-
-    }
-
-
-    .products-scroll-wrapper{
-
-        border-radius:0 0 var(--deal-radius) var(--deal-radius);
-
-    }
-
-
-    .products-list{
-
-        padding-bottom:5px;
-
-    }
-
-
-    .product-card{
-
-        width:180px;
-
-        padding:18px 14px;
-
-    }
-
-
-    .product-card__image{
-
-        height:120px;
-
-    }
-
-
-    .product-card__title{
-
-        font-size:13px;
-
-    }
-
-
-    .product-card__price{
-
-        font-size:15px;
-
-    }
-
-
-}
-
-
-
-/* ========================================
-   Small Mobile
-======================================== */
-
-
-@media(max-width:520px){
-
-
-    .deals-info{
-
-        flex-direction:column;
-
-        gap:12px;
-
-        text-align:center;
-
-    }
-
-
-    .discount-icon{
-
-        width:40px;
-
-        height:40px;
-
-        font-size:16px;
-
-    }
-
-
-    .countdown .time-box{
-
-        min-width:30px;
-
-        font-size:14px;
-
-    }
-
-
-    .view-all-btn{
-
-        width:100%;
-
-        justify-content:center;
-
-    }
-
-
-    .product-card{
-
-        width:165px;
-
-    }
-
-
-    .scroll-arrow{
-
-        width:32px;
-
-        height:32px;
-
-    }
-
-
-}
-
-/* ========================================
-   Checkout Page
-   NovaTech
-======================================== */
-
-.checkout-page{
-
-    width:100%;
-
-    min-height:100vh;
-
-    background:#000717;
-
-    padding:50px 0;
-
-    direction:rtl;
-
-}
-
-
-
-/* ========================================
-   Container
-======================================== */
-
-
-.checkout-container{
-
-    width:90%;
-
-    max-width:1200px;
-
-    margin:auto;
-
-
-    display:grid;
-
-    grid-template-columns:1fr 380px;
-
-    gap:25px;
-
-}
-
-
-
-/* ========================================
-   Boxes
-======================================== */
-
-
-.checkout-form-box,
-.checkout-summary{
-
-    background:#0d1424;
-
-    border:1px solid #1c2438;
-
-    border-radius:18px;
-
-    padding:30px;
-
-    color:#fff;
-
-}
-
-
-
-/* ========================================
-   Titles
-======================================== */
-
-
-.checkout-form-box h2,
-.checkout-summary h2{
-
-    color:#fff;
-
-    font-size:22px;
-
-    font-weight:700;
-
-    margin-bottom:25px;
-
-}
-
-
-
-/* ========================================
-   Form
-======================================== */
-
-
-.form-group{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-
-    margin-bottom:18px;
-
-}
-
-
-
-.form-group label{
-
-    color:#cbd5e1;
-
-    font-size:14px;
-
-}
-
-
-
-.checkout-input{
-
-    width:100%;
-
-
-    background:#111a2e;
-
-    border:1px solid #334155;
-
-
-    color:#fff;
-
-
-    padding:14px;
-
-
-    border-radius:10px;
-
-
-    font-family:inherit;
-
-    font-size:15px;
-
-
-    outline:none;
-
-
-    transition:.2s;
-
-}
-
-
-
-.checkout-input:focus{
-
-    border-color:#6d5ef7;
-
-    background:#131d33;
-
-}
-
-
-
-textarea.checkout-input{
-
-    resize:none;
-
-    min-height:120px;
-
-}
-
-
-
-/* ========================================
-   Submit Button
-======================================== */
-
-
-.checkout-form-box button{
-
-    width:100%;
-
-    padding:15px;
-
-
-    border:none;
-
-    border-radius:12px;
-
-
-    background:#6d5ef7;
-
-    color:#fff;
-
-
-    font-family:inherit;
-
-    font-size:16px;
-
-
-    cursor:pointer;
-
-
-    transition:.3s;
-
-}
-
-
-
-.checkout-form-box button:hover{
-
-    background:#8b7fff;
-
-}
-
-
-
-/* ========================================
-   Summary
-======================================== */
-
-
-.checkout-summary p{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-
-    color:#cbd5e1;
-
-
-    padding:12px 0;
-
-
-    border-bottom:1px solid #1c2438;
-
-
-    font-size:14px;
-
-}
-
-
-
-.checkout-summary p:last-child{
-
-    border:none;
-
-}
-
-
-
-.checkout-summary p strong{
-
-    color:#fff;
-
-}
-
-
-
-/* ========================================
-   Tablet
-======================================== */
-
-
-@media(max-width:1000px){
-
-
-    .checkout-container{
-
-        width:92%;
-
-        grid-template-columns:1fr;
-
-    }
-
-
-    .checkout-summary{
-
-        order:-1;
-
-    }
-
-
-}
-
-
-
-/* ========================================
-   Mobile
-======================================== */
-
-
-@media(max-width:600px){
-
-
-    .checkout-page{
-
-        padding:30px 0;
-
-    }
-
-
-    .checkout-container{
-
-        width:94%;
-
-        gap:18px;
-
-    }
-
-
-    .checkout-form-box,
-    .checkout-summary{
-
-        padding:20px;
-
-        border-radius:14px;
-
-    }
-
-
-    .checkout-form-box h2,
-    .checkout-summary h2{
-
-        font-size:19px;
-
-        margin-bottom:18px;
-
-    }
-
-
-    .checkout-input{
-
-        padding:12px;
-
-        font-size:14px;
-
-    }
-
-
-    .checkout-form-box button{
-
-        padding:13px;
-
-        font-size:15px;
-
-    }
-
-
-    .checkout-summary p{
-
-        font-size:13px;
-
-    }
-
-}
-
-
-
-/* ========================================
-   Small Mobile
-======================================== */
-
-
-@media(max-width:380px){
-
-
-    .checkout-container{
-
-        width:92%;
-
-    }
-
-
-    .checkout-form-box,
-    .checkout-summary{
-
-        padding:16px;
-
-    }
-
-
-}
-
-/* ========================================
-   Orders Page
-   NovaTech
-======================================== */
+===================================================== */
 
 :root{
 
@@ -2472,18 +31,15 @@ textarea.checkout-input{
 
 
 
-/* ========================================
-   Orders Page
-======================================== */
-
+/* ===========================
+   Page
+=========================== */
 
 .orders-page{
 
-    width:100%;
+    background:var(--page-bg);
 
     min-height:100vh;
-
-    background:var(--page-bg);
 
     padding:45px 0 70px;
 
@@ -2503,10 +59,9 @@ textarea.checkout-input{
 
 
 
-/* ========================================
+/* ===========================
    Header
-======================================== */
-
+=========================== */
 
 .orders-header{
 
@@ -2546,26 +101,23 @@ textarea.checkout-input{
 
 .continue-shopping{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-
     background:var(--primary);
 
     color:#fff;
 
+    text-decoration:none;
 
     padding:13px 22px;
 
     border-radius:12px;
 
-
-    text-decoration:none;
-
     transition:.25s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
 
 }
 
@@ -2579,10 +131,9 @@ textarea.checkout-input{
 
 
 
-/* ========================================
-   Orders List
-======================================== */
-
+/* ===========================
+   Cards
+=========================== */
 
 .orders-list{
 
@@ -2624,21 +175,19 @@ textarea.checkout-input{
 
 
 
-/* ========================================
-   Order Top
-======================================== */
-
+/* ===========================
+   Top
+=========================== */
 
 .order-top{
+
+    padding:22px 28px;
 
     display:flex;
 
     justify-content:space-between;
 
     align-items:center;
-
-
-    padding:22px 28px;
 
     border-bottom:1px solid var(--border);
 
@@ -2658,10 +207,9 @@ textarea.checkout-input{
 
 
 
-/* ========================================
+/* ===========================
    Status
-======================================== */
-
+=========================== */
 
 .status{
 
@@ -2727,10 +275,9 @@ textarea.checkout-input{
 
 
 
-/* ========================================
-   Order Body
-======================================== */
-
+/* ===========================
+   Body
+=========================== */
 
 .order-body{
 
@@ -2790,75 +337,153 @@ textarea.checkout-input{
 
     display:block;
 
-    color:#fff;
-
     margin-top:10px;
+
+    color:#fff;
 
     font-size:18px;
 
 }
 
-/* =====================================================
-   Order Detail Page
-===================================================== */
+/* ==========================================
+   Footer کارت سفارش
+========================================== */
 
-.order-detail-page {
-    background: var(--page-bg);
-    min-height: 100vh;
-    padding: 45px 0 70px;
-}
-
-
-.order-detail-container {
-    width: 92%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-
-/* Header */
-
-.detail-header {
+.order-footer{
 
     display:flex;
-    justify-content:space-between;
+
+    justify-content:flex-end;
+
     align-items:center;
-    gap:20px;
+
+    padding:22px 30px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+
+.details-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    background:var(--primary);
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+
+.details-btn:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateX(-3px);
+
+}
+
+
+
+.details-btn i{
+
+    transition:.3s;
+
+}
+
+
+
+.details-btn:hover i{
+
+    transform:translateX(-5px);
+
+}
+
+
+
+/* ==========================================
+   Empty Orders
+========================================== */
+
+.empty-orders{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:70px 30px;
+
+    text-align:center;
+
+}
+
+
+
+.empty-orders i{
+
+    font-size:80px;
+
+    color:var(--primary);
 
     margin-bottom:30px;
 
 }
 
 
-.detail-header h1 {
+
+.empty-orders h2{
 
     color:#fff;
-    font-size:32px;
-    margin-bottom:8px;
+
+    margin-bottom:15px;
+
+    font-size:30px;
 
 }
 
 
-.detail-header p {
+
+.empty-orders p{
 
     color:var(--text-light);
-    font-size:15px;
+
+    line-height:2;
+
+    margin-bottom:35px;
 
 }
 
 
 
-.back-orders {
+.shop-btn{
 
-    display:flex;
-    align-items:center;
-    gap:10px;
+    display:inline-block;
+
+    padding:15px 30px;
 
     background:var(--primary);
 
     color:#fff;
-
-    padding:12px 22px;
 
     border-radius:12px;
 
@@ -2870,7 +495,7 @@ textarea.checkout-input{
 
 
 
-.back-orders:hover {
+.shop-btn:hover{
 
     background:var(--primary-hover);
 
@@ -2878,12 +503,157 @@ textarea.checkout-input{
 
 
 
-/* ==========================
-   Status Card
-========================== */
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:900px){
+
+    .orders-header{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        align-items:flex-start;
+
+    }
+
+    .order-body{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
 
 
-.status-card {
+
+@media(max-width:600px){
+
+    .order-top{
+
+        flex-direction:column;
+
+        gap:18px;
+
+        align-items:flex-start;
+
+    }
+
+    .order-footer{
+
+        justify-content:center;
+
+    }
+
+    .details-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .orders-header h1{
+
+        font-size:25px;
+
+    }
+
+    .empty-orders{
+
+        padding:50px 20px;
+
+    }
+
+}
+
+
+
+
+/*جزئیال سفارش*/
+/* =====================================================
+   Order Detail
+===================================================== */
+
+.order-detail-page{
+
+    background:var(--page-bg);
+
+    min-height:100vh;
+
+    padding:45px 0 70px;
+
+}
+
+.order-detail-container{
+
+    width:92%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+.detail-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.detail-header h1{
+
+    color:#fff;
+
+    font-size:32px;
+
+    margin-bottom:8px;
+
+}
+
+.detail-header p{
+
+    color:var(--text-light);
+
+}
+
+.back-orders{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    background:var(--primary);
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.back-orders:hover{
+
+    background:var(--primary-hover);
+
+}
+
+.status-card{
 
     background:var(--card-bg);
 
@@ -2897,9 +667,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.status-card h3 {
+.status-card h3{
 
     color:#fff;
 
@@ -2907,9 +675,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.status-timeline {
+.status-timeline{
 
     display:flex;
 
@@ -2919,9 +685,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.step {
+.step{
 
     display:flex;
 
@@ -2933,9 +697,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.circle {
+.circle{
 
     width:46px;
 
@@ -2949,17 +711,17 @@ textarea.checkout-input{
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     color:#8b93a8;
 
+    font-weight:bold;
+
 }
 
-
-
-.step.active .circle {
+.step.active .circle{
 
     background:var(--primary);
 
@@ -2969,9 +731,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.step span {
+.step span{
 
     color:#cbd5e1;
 
@@ -2979,9 +739,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.line {
+.line{
 
     flex:1;
 
@@ -2993,14 +751,7 @@ textarea.checkout-input{
 
 }
 
-
-
-/* ==========================
-   Detail Grid
-========================== */
-
-
-.detail-grid {
+.detail-grid{
 
     display:grid;
 
@@ -3012,11 +763,9 @@ textarea.checkout-input{
 
 }
 
-
-
 .receiver-card,
 .price-card,
-.products-card {
+.products-card{
 
     background:var(--card-bg);
 
@@ -3028,11 +777,9 @@ textarea.checkout-input{
 
 }
 
-
-
 .receiver-card h3,
 .price-card h3,
-.products-card h2 {
+.products-card h2{
 
     color:#fff;
 
@@ -3040,11 +787,7 @@ textarea.checkout-input{
 
 }
 
-
-
-/* اطلاعات گیرنده */
-
-.info-row {
+.info-row{
 
     display:flex;
 
@@ -3052,33 +795,27 @@ textarea.checkout-input{
 
     align-items:flex-start;
 
-    gap:20px;
-
     padding:15px 0;
 
     border-bottom:1px solid var(--border);
 
+    gap:20px;
+
 }
 
-
-
-.info-row:last-child {
+.info-row:last-child{
 
     border:none;
 
 }
 
-
-
-.info-row span {
+.info-row span{
 
     color:#b8c0d4;
 
 }
 
-
-
-.info-row strong {
+.info-row strong{
 
     color:#fff;
 
@@ -3086,22 +823,15 @@ textarea.checkout-input{
 
 }
 
-
-
-/* ==========================
-   Products
-========================== */
-
-
-.ordered-product {
+.ordered-product{
 
     display:grid;
 
     grid-template-columns:110px 1fr 180px;
 
-    align-items:center;
-
     gap:20px;
+
+    align-items:center;
 
     padding:20px 0;
 
@@ -3109,17 +839,13 @@ textarea.checkout-input{
 
 }
 
-
-
-.ordered-product:last-child {
+.ordered-product:last-child{
 
     border:none;
 
 }
 
-
-
-.ordered-image img {
+.ordered-image img{
 
     width:100px;
 
@@ -3135,9 +861,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.ordered-info h3 {
+.ordered-info h3{
 
     color:#fff;
 
@@ -3145,9 +869,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.ordered-brand {
+.ordered-brand{
 
     color:#9ca3af;
 
@@ -3155,9 +877,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.ordered-meta {
+.ordered-meta{
 
     display:flex;
 
@@ -3167,37 +887,29 @@ textarea.checkout-input{
 
 }
 
-
-
-.ordered-meta span {
+.ordered-meta span{
 
     color:#cbd5e1;
 
 }
 
-
-
-.ordered-total {
+.ordered-total{
 
     text-align:left;
 
 }
 
-
-
-.ordered-total span {
-
-    display:block;
+.ordered-total span{
 
     color:#9ca3af;
+
+    display:block;
 
     margin-bottom:10px;
 
 }
 
-
-
-.ordered-total strong {
+.ordered-total strong{
 
     color:#fff;
 
@@ -3205,14 +917,7 @@ textarea.checkout-input{
 
 }
 
-
-
-/* ==========================
-   Empty Products
-========================== */
-
-
-.empty-products {
+.empty-products{
 
     text-align:center;
 
@@ -3222,14 +927,7 @@ textarea.checkout-input{
 
 }
 
-
-
-/* ==========================
-   Cancel Box
-========================== */
-
-
-.cancel-box {
+.cancel-box{
 
     display:flex;
 
@@ -3251,9 +949,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.cancel-box i {
+.cancel-box i{
 
     font-size:34px;
 
@@ -3261,9 +957,7 @@ textarea.checkout-input{
 
 }
 
-
-
-.cancel-box strong {
+.cancel-box strong{
 
     display:block;
 
@@ -3273,10 +967,77 @@ textarea.checkout-input{
 
 }
 
-
-
-.cancel-box p {
+.cancel-box p{
 
     color:#fecaca;
 
 }
+
+@media(max-width:900px){
+
+    .detail-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .ordered-product{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .ordered-image{
+
+        text-align:center;
+
+    }
+
+    .ordered-total{
+
+        text-align:center;
+
+    }
+
+    .status-timeline{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    .line{
+
+        width:2px;
+
+        height:35px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .detail-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+    }
+
+    .back-orders{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}
+
