@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/accounts/profile.css' %}">
+    {% block ex_style %}{% endblock %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="profile-page">
+
+    <div class="profile-sidebar">
+
+        <div class="profile-user">
+
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h3 class="profile-name">
+                {{ request.user.username }}
+            </h3>
+
+            <p class="profile-phone">
+                {{ request.user.profile.phone_number }}
+            </p>
+
+        </div>
+
+        <ul class="profile-menu">
+
+            <li class="profile-menu-item {% if active_page == 'orders' %}active{% endif %}">
+
+                <a href="{% url 'my_orders' %}">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <span>سفارش‌ها</span>
+
+                </a>
+
+            </li>
+
+            <li class="profile-menu-item {% if active_page == 'account' %}active{% endif %}">
+
+                <a href="{% url 'account_info' %}">
+
+                    <i class="fa-solid fa-user-gear"></i>
+
+                    <span>اطلاعات حساب کاربری</span>
+
+                </a>
+
+            </li>
+
+            <li class="profile-menu-item logout">
+
+                <a href="{% url 'logout' %}">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>خروج</span>
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+   <div class="profile-content">
+
+        <div class="content-box">
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="alert-message" class="alert {{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% block profile_content %}
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block ex_js %}
+    <script src="{% static 'js/accounts/massage.js' %}"></script>
+{% endblock %}

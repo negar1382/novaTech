@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}لیست مقالات{% endblock %}
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blog/article_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;" dir="rtl">
+        <h1 class="page-title" style="margin-bottom: 30px; color: #fff;">{{ title }}</h1>
+
+        <div class="articles-grid">
+            {% for article in articles %}
+                <article class="article-card">
+                    <div class="article-image-box">
+                        {% if article.image %}
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/400x250" alt="{{ article.title }}">
+                        {% endif %}
+                    </div>
+                    <div class="article-content">
+                        <span class="article-date">{{ article.created_at|date:"Y/m/d" }}</span>
+                        <h2 class="article-title">{{ article.title }}</h2>
+                        <div class="article-footer">
+                            <span class="article-author">نویسنده: {{ article.author }}</span>
+                            <a href="{% url 'article_detail' article.slug%}" class="read-more-btn">مشاهده مقاله</a>
+                        </div>
+                    </div>
+                </article>
+            {% empty %}
+                <div style="text-align: center; padding: 40px; color: #a2a3b7; width: 100%;">
+                    مقاله‌ای یافت نشد.
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- دکمه‌های صفحه‌بندی -->
+        {% if articles.has_other_pages %}
+            <div class="pagination-wrapper">
+                <ul class="pagination">
+                    {% if articles.has_previous %}
+                        <li><a href="?page={{ articles.previous_page_number }}" class="page-link">&laquo; قبلی</a></li>
+                    {% else %}
+                        <li class="disabled"><span class="page-link">&laquo; قبلی</span></li>
+                    {% endif %}
+
+                    {% for num in page_range %}
+                        {% if articles.number == num %}
+                            <li class="active"><span class="page-link">{{ num }}</span></li>
+                        {% else %}
+                            <li><a href="?page={{ num }}" class="page-link">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_range.stop|add:"-1" < total_pages %}
+                        <li class="disabled"><span class="page-link dots">...</span></li>
+                        <li><a href="?page={{ total_pages }}" class="page-link">{{ total_pages }}</a></li>
+                    {% endif %}
+
+                    {% if articles.has_next %}
+                        <li><a href="?page={{ articles.next_page_number }}" class="page-link">بعدی &raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span class="page-link">بعدی &raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

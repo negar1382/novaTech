@@ -1,0 +1,37 @@
+{% load static %}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home/article.css' %}">
+</head>
+
+<section class="banner-grid" dir="rtl">
+  <div class="banner-grid__container">
+
+    <!-- هدر بخش: عنوان راست، مشاهده همه چپ (دقیقا مثل ساختار قبلی) -->
+    <div class="banner-grid__header">
+      <a href="{% url 'article_list' %}" class="banner-grid__view-all">مشاهده همه</a>
+
+      <div class="banner-grid__title-wrap">
+        <h2 class="banner-grid__title">مقالات</h2>
+        <span class="banner-grid__title-bar"></span>
+      </div>
+    </div>
+
+    <!-- گرید ۴ تایی از بنرها -->
+    <div class="banner-grid__list">
+
+        {% for article in articles %}
+
+            <a href="#" class="banner-item">
+
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="{{ article.title }}">
+                {% endif %}
+
+            </a>
+
+        {% endfor %}
+
+    </div>
+  </div>
+</section>

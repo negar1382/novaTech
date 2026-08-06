@@ -1,0 +1,214 @@
+.account-title{
+    color:#fff;
+    font-size:24px;
+    margin-bottom:35px;
+    font-weight:700;
+}
+
+.info-item{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    background:#111b30;
+
+    border:1px solid #1c2438;
+
+    border-radius:14px;
+
+    transition:.3s;
+}
+
+.info-item:hover{
+
+    border-color:#2563eb;
+}
+
+.info-item span{
+
+    color:#94a3b8;
+
+    font-size:15px;
+}
+
+.info-item strong{
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+}
+
+.account-actions{
+
+    margin-top:35px;
+
+    text-align:left;
+}
+
+.edit-profile-btn{
+
+    display:inline-block;
+
+    padding:13px 28px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    transition:.3s;
+}
+
+.edit-profile-btn:hover{
+
+    background:#1d4ed8;
+}
+
+
+
+/*edit profile*/
+
+/* ===========================
+   Edit Profile Form
+=========================== */
+
+.form-group{
+    margin-bottom:25px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    color:#cbd5e1;
+    font-size:15px;
+    font-weight:600;
+}
+
+.form-control{
+
+    width:100%;
+
+    background:#111b30;
+
+    border:1px solid #1c2438;
+
+    border-radius:12px;
+
+    padding:14px 16px;
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.form-control:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+.save-btn{
+
+    border:none;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.save-btn:hover{
+
+    background:#1d4ed8;
+}
+
+
+
+/*پیام ویرایش */
+/* ===========================
+   Alerts
+=========================== */
+
+.alert{
+
+    padding:15px 18px;
+
+    border-radius:12px;
+
+    margin-bottom:25px;
+
+    font-size:15px;
+
+    font-weight:500;
+}
+
+.alert.success{
+
+    background:#12351f;
+
+    border:1px solid #22c55e;
+
+    color:#bbf7d0;
+}
+
+.alert.error{
+
+    background:#3b1616;
+
+    border:1px solid #ef4444;
+
+    color:#fecaca;
+}
+
+.alert.warning{
+
+    background:#4a360d;
+
+    border:1px solid #f59e0b;
+
+    color:#fde68a;
+}
+
+.alert.info{
+
+    background:#132b45;
+
+    border:1px solid #3b82f6;
+
+    color:#bfdbfe;
+}
+
+.alert{
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.alert.hide{
+    opacity:0;
+    transform:translateY(-10px);
+}

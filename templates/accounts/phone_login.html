@@ -1,0 +1,113 @@
+{% extends "auth_base.html" %}
+
+
+
+{% block title %}
+
+ورود با شماره همراه
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="auth-header">
+
+<h1 class="auth-title">
+
+ورود با شماره همراه
+
+</h1>
+
+
+<p class="auth-description">
+
+شماره موبایل خود را وارد کنید
+
+</p>
+
+
+</div>
+
+
+
+
+<form method="post" class="auth-form">
+
+
+{% csrf_token %}
+
+
+
+<div class="input-group">
+
+
+<i class="fa-solid fa-phone"></i>
+
+
+{{ form.phone_number }}
+
+
+</div>
+
+
+
+{% if form.phone_number.errors %}
+
+<div class="error-message">
+
+{{ form.phone_number.errors }}
+
+</div>
+
+{% endif %}
+
+
+
+<button class="auth-btn">
+
+دریافت کد تایید
+
+</button>
+
+
+
+</form>
+
+<div class="login-method">
+
+    <span>
+        ورود با رمز عبور:
+    </span>
+
+
+    <a href="{% url 'login' %}">
+
+        ورود با نام کاربری
+
+    </a>
+
+</div>
+
+
+<div class="auth-links">
+
+<span>
+حساب ندارید؟
+</span>
+
+
+<a href="{% url 'register' %}">
+
+ثبت نام
+
+</a>
+
+
+
+</div>
+
+{% endblock %}

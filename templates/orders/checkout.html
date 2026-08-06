@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+تکمیل خرید
+{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'css/orders/checkout.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+
+<section class="checkout-page">
+
+
+<div class="checkout-container">
+
+
+<div class="checkout-form-box">
+
+
+<h2>
+اطلاعات ارسال
+</h2>
+
+
+<form method="post">
+
+
+{% csrf_token %}
+
+
+<div class="form-group">
+
+{{ form.first_name.label }}
+
+{{ form.first_name }}
+
+</div>
+
+
+<div class="form-group">
+
+{{ form.last_name.label }}
+
+{{ form.last_name }}
+
+</div>
+
+
+<div class="form-group">
+
+{{ form.phone.label }}
+
+{{ form.phone }}
+
+</div>
+
+
+<div class="form-group">
+
+{{ form.city.label }}
+
+{{ form.city }}
+
+</div>
+
+
+<div class="form-group">
+
+{{ form.address.label }}
+
+{{ form.address }}
+
+</div>
+
+
+<div class="form-group">
+
+{{ form.postal_code.label }}
+
+{{ form.postal_code }}
+
+</div>
+
+
+
+<button type="submit">
+
+ثبت سفارش
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+
+<div class="checkout-summary">
+
+
+<h2>
+خلاصه سفارش
+</h2>
+
+
+<p>
+تعداد کالا:
+{{ cart.total_items }}
+</p>
+
+
+<p>
+مبلغ:
+{{ cart.total_price }}
+تومان
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,137 @@
+/* ========================================
+   متغیرهای رنگی
+   هرجا خواستی رنگ‌بندی رو عوض کنی، فقط همین بخش رو ویرایش کن
+======================================== */
+:root {
+  --page-bg: #000717;
+
+  --box-bg: #0d1424;
+  --box-border: #1c2438;
+  --box-radius: 16px;
+
+  --title-color: #ffffff;
+  --icon-color: #A287FE;
+
+  --logo-bg: #ffffff;
+  --logo-border: #1c2438;
+  --logo-radius: 10px;
+
+  --brand-name-color: #c9cdd6;
+
+  --font-main: 'Vazirmatn', Tahoma, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--page-bg);
+}
+
+/* ========================================
+   کانتینر اصلی (باکس با بردر، مثل تصویر)
+======================================== */
+.popular-brands {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.popular-brands__container {
+  background: var(--box-bg);
+  border: 1px solid var(--box-border);
+  border-radius: var(--box-radius);
+  padding: 20px 24px 24px;
+}
+
+/* ========================================
+   هدر: آیکون + عنوان، بالا سمت راست
+======================================== */
+.popular-brands__header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.popular-brands__icon {
+  color: var(--icon-color);
+  display: flex;
+}
+
+.popular-brands__title {
+  color: var(--title-color);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ========================================
+   ردیف ثابت برندها (بدون اسکرول، بدون فلش)
+======================================== */
+.popular-brands__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 0 80px;
+}
+
+.brand-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  width: 100px;
+}
+
+.brand-item__logo {
+  width: 100px;
+  height: 72px;
+  background: var(--logo-bg);
+  border: 1px solid var(--logo-border);
+  border-radius: var(--logo-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.brand-item:hover .brand-item__logo {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.brand-item__logo img {
+  max-width: 78%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
+.brand-item__name {
+  font-size: 12.5px;
+  color: var(--brand-name-color);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ========================================
+   واکنش‌گرا (ریسپانسیو)
+======================================== */
+@media (max-width: 700px) {
+  .brand-item,
+  .brand-item__logo {
+    width: 80px;
+  }
+
+  .brand-item__logo {
+    height: 60px;
+  }
+}

@@ -1,0 +1,92 @@
+{% load static %}
+{% load humanize %}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home/wonder_box.css' %}">
+</head>
+
+
+<section class="amazing-deals" dir="rtl">
+  <div class="deals-container">
+
+    <!-- پنل سمت راست: عنوان، تایمر و دکمه مشاهده همه -->
+    <div class="deals-info">
+      <div class="deals-info__top">
+        <img class="w-full inline-block" src="https://dkstatics-public.digikala.com/digikala-static/0d072059918d0c22b88320554ce4b3e07d0472f2_1746354551.svg" width="64" height="64" alt="" title="" style="object-fit: contain;">
+        <h2 class="deals-title">شگفت‌انگیزها</h2>
+      </div>
+
+      <div class="countdown" id="countdown" data-end-time="{{ campaign.end_time|date:'c' }}">
+        <div class="time-box" id="cd-hours">۰۰</div>
+        <span class="colon">:</span>
+        <div class="time-box" id="cd-minutes">۰۰</div>
+        <span class="colon">:</span>
+        <div class="time-box" id="cd-seconds">۰۰</div>
+      </div>
+
+      <a href="{% url 'amazing_products' %}" class="view-all-btn">
+        <span>مشاهده همه</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+
+      </a>
+    </div>
+
+    <!-- لیست محصولات (اسکرول‌شونده) -->
+    <div class="products-scroll-wrapper">
+
+      <button class="scroll-arrow" id="scrollArrow" type="button" aria-label="نمایش محصولات بیشتر">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="products-list" id="productsList">
+
+            {% for product in amazing_products %}
+
+            <article class="product-card">
+
+                <div class="product-card__image">
+
+                    {% if product.images.first %}
+                        <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                    {% endif %}
+
+                </div>
+
+                <h3 class="product-card__title">
+                    <a href="{% url 'product_detail' product.slug%}">{{ product.name }}</a>
+                </h3>
+
+                <div class="product-card__price-row">
+
+                    <span class="product-card__old-price">
+                        {{ product.price|intcomma }}
+                    </span>
+
+                    <span class="product-card__discount">
+                        ٪{{ product.discount_percent }}
+                    </span>
+
+                </div>
+
+                <div class="product-card__price">
+                    {{ product.discount_price|intcomma }}
+                    <span class="price-unit">
+                        تومان
+                    </span>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+  </div>
+</section>

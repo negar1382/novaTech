@@ -1,0 +1,150 @@
+{#{% load static %}#}
+{#<head>#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">#}
+{#    <link rel="stylesheet" href="{% static 'css/home/brand.css' %}">#}
+{#</head>#}
+{##}
+{#<section class="popular-brands" dir="rtl">#}
+{#  <div class="popular-brands__container">#}
+{##}
+{#    <!-- هدر بخش -->#}
+{#    <div class="popular-brands__header">#}
+{#      <span class="popular-brands__icon">#}
+{#        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">#}
+{#          <path d="M12 2L13.8 8.6L20 10L13.8 11.4L12 18L10.2 11.4L4 10L10.2 8.6L12 2Z"/>#}
+{#        </svg>#}
+{#      </span>#}
+{#      <h2 class="popular-brands__title">محبوب‌ترین برندها</h2>#}
+{#    </div>#}
+{##}
+{#    <!-- ردیف ثابت برندها (بدون اسکرول و بدون فلش) -->#}
+{#    <div class="popular-brands__list" id="brandsList">#}
+{##}
+{#      <a href="#" class="brand-item">#}
+{#        <div class="brand-item__logo">#}
+{#          <img src="{% static 'images/home/nody-دانلود-مجموعه-عکس-وکتور-لوگتلفن-رایگان-با-کیفیت-بالا-1734433035.png' %}" alt="هواوی">#}
+{#        </div>#}
+{#        <span class="brand-item__name">سامسونگ</span>#}
+{#      </a>#}
+{##}
+{#      <a href="#" class="brand-item">#}
+{#        <div class="brand-item__logo">#}
+{#          <img src="{% static 'images/home/apple-logo-2.png' %}" alt="نتربیت">#}
+{#        </div>#}
+{#        <span class="brand-item__name">اپل</span>#}
+{#      </a>#}
+{##}
+{#      <a href="#" class="brand-item">#}
+{#        <div class="brand-item__logo">#}
+{#          <img src="{% static 'images/home/shialog-4.jpg' %}" alt="پمینا">#}
+{#        </div>#}
+{#        <span class="brand-item__name">شیائومی</span>#}
+{#      </a>#}
+{##}
+{#      <a href="#" class="brand-item">#}
+{#        <div class="brand-item__logo">#}
+{#          <img src="{% static 'images/home/1656156015-ASUS-logo.png' %}" alt="ایکس ویژن">#}
+{#        </div>#}
+{#        <span class="brand-item__name">ایسوس</span>#}
+{#      </a>#}
+{##}
+{#      <a href="#" class="brand-item">#}
+{#        <div class="brand-item__logo">#}
+{#          <img src="{% static 'images/home/images.jpg' %}" alt="پنتر">#}
+{#        </div>#}
+{#        <span class="brand-item__name">HP</span>#}
+{#      </a>#}
+{##}
+{#      <a href="#" class="brand-item">#}
+{#        <div class="brand-item__logo">#}
+{#          <img src="{% static 'images/home/Canon-Central-And-North-Africa-Unlocks-Value-Of-Africas-Print-Sector-With-New-Business-Partner-Appointments.png' %}" alt="ای دیتا">#}
+{#        </div>#}
+{#        <span class="brand-item__name">کانن</span>#}
+{#      </a>#}
+{##}
+{#    </div>#}
+{#  </div>#}
+{#</section>#}
+{##}
+{#<script src="{% static 'js/home/brand.js' %}"></script>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load static %}
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home/brand.css' %}">
+</head>
+
+<section class="popular-brands" dir="rtl">
+  <div class="popular-brands__container">
+
+    <!-- هدر بخش -->
+    <div class="popular-brands__header">
+      <span class="popular-brands__icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L13.8 8.6L20 10L13.8 11.4L12 18L10.2 11.4L4 10L10.2 8.6L12 2Z"/>
+        </svg>
+      </span>
+      <h2 class="popular-brands__title">محبوب‌ترین برندها</h2>
+    </div>
+
+    <!-- ردیف ثابت برندها -->
+    <div class="popular-brands__list" id="brandsList">
+
+      <a href="{% url 'brand_products' 'سامسونگ' %}" class="brand-item">
+        <div class="brand-item__logo">
+          <img src="{% static 'images/home/nody-دانلود-مجموعه-عکس-وکتور-لوگتلفن-رایگان-با-کیفیت-بالا-1734433035.png' %}" alt="سامسونگ">
+        </div>
+        <span class="brand-item__name">سامسونگ</span>
+      </a>
+
+      <a href="{% url 'brand_products' 'اپل' %}" class="brand-item">
+        <div class="brand-item__logo">
+          <img src="{% static 'images/home/apple-logo-2.png' %}" alt="اپل">
+        </div>
+        <span class="brand-item__name">اپل</span>
+      </a>
+
+      <a href="{% url 'brand_products' 'شیائومی' %}" class="brand-item">
+        <div class="brand-item__logo">
+          <img src="{% static 'images/home/shialog-4.jpg' %}" alt="شیائومی">
+        </div>
+        <span class="brand-item__name">شیائومی</span>
+      </a>
+
+      <a href="{% url 'brand_products' 'ایسوس' %}" class="brand-item">
+        <div class="brand-item__logo">
+          <img src="{% static 'images/home/1656156015-ASUS-logo.png' %}" alt="ایسوس">
+        </div>
+        <span class="brand-item__name">ایسوس</span>
+      </a>
+
+      <a href="{% url 'brand_products' 'HP' %}" class="brand-item">
+        <div class="brand-item__logo">
+          <img src="{% static 'images/home/images.jpg' %}" alt="HP">
+        </div>
+        <span class="brand-item__name">HP</span>
+      </a>
+
+      <a href="{% url 'brand_products' 'کانن' %}" class="brand-item">
+        <div class="brand-item__logo">
+          <img src="{% static 'images/home/Canon-Central-And-North-Africa-Unlocks-Value-Of-Africas-Print-Sector-With-New-Business-Partner-Appointments.png' %}" alt="کانن">
+        </div>
+        <span class="brand-item__name">کانن</span>
+      </a>
+
+    </div>
+  </div>
+</section>

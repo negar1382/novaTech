@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+سبد خرید
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="cart-page">
+
+    <div class="container">
+
+        <!-- عنوان -->
+        <div class="cart-header">
+
+            <h1 class="cart-title">
+                سبد خرید
+            </h1>
+
+            <span class="cart-count">
+                {{ cart.total_items }} کالا
+            </span>
+
+        </div>
+        {% if cart.items.exists %}
+            <div class="cart-wrapper">
+
+                <!-- محصولات -->
+                <div class="cart-items" id="cart-item-{{ item.id }}">
+                    {% if cart.items.exists %}
+                        {% for item in cart.items.all %}
+                    <!-- محصول -->
+                    <div class="cart-item">
+
+                        <div class="cart-item-image">
+
+                            <img src="{{ item.product.images.first.image.url }}" alt="محصول">
+
+                        </div>
+
+                        <div class="cart-item-info">
+
+                            <h3 class="product-name">
+                                <a href="{% url 'product_detail' item.product.slug%}">{{ item.product.name }}</a>
+                            </h3>
+                            <p class="product-brand">
+
+                                برند :
+                                <span>{{ item.product.brand.name|default:"-" }}</span>
+
+                            </p>
+
+                            <p class="product-guarantee">
+                                گارانتی 18 ماهه
+                            </p>
+
+                            {% if item.product.stock > 0 %}
+
+                                <div class="stock-status in-stock">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    موجود در انبار
+
+                                </div>
+
+                                {% else %}
+
+                                <div class="stock-status out-stock">
+
+                                    <i class="fa-solid fa-circle-xmark"></i>
+
+                                    ناموجود
+
+                                </div>
+
+                            {% endif %}
+
+                            <div class="old-price">
+                                {% if item.product.discount_price %}
+                                    <div class="old-price">
+
+                                        {{ item.product.price|intcomma }}
+
+                                        تومان
+
+                                    </div>
+                                {% endif %}
+                            </div>
+
+
+                            <div class="price-row">
+
+                                {% if item.product.discount_price %}
+
+                                    <span class="discount-badge">
+
+                                        {{ item.product.discount_percent }}%
+
+                                    </span>
+
+                                {% endif %}
+
+                                <span class="product-price">
+
+                                    {% if item.product.discount_price %}
+
+                                        {{ item.product.discount_price|intcomma }}
+
+                                    {% else %}
+
+                                        {{ item.product.price|intcomma }}
+
+                                    {% endif %}
+
+                                    تومان
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="cart-item-actions">
+
+                            <div class="quantity-box">
+
+                                <button
+                                    type="button"
+                                    class="qty-btn increase-btn"
+                                    data-url="{% url 'increase_quantity' item.id %}"
+                                    data-csrf="{{ csrf_token }}"
+                                >
+                                    +
+                                </button>
+
+                                <span class="qty-number">
+                                    {{ item.quantity }}
+                                </span>
+
+                                <button
+                                    type="button"
+                                    class="qty-btn decrease-btn"
+                                    data-url="{% url 'decrease_quantity' item.id %}"
+                                    data-csrf="{{ csrf_token }}"
+                                >
+                                    -
+                                </button>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="remove-btn"
+                                data-url="{% url 'remove_from_cart' item.id %}"
+                                data-csrf="{{ csrf_token }}"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                                حذف
+                            </button>
+
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                    <!-- پایان محصول -->
+
+                </div>
+
+                {#                <!-- خلاصه سفارش -->#}
+                <aside class="cart-summary">
+
+                    <div class="summary-card">
+
+                        <div class="free-shipping-box">
+
+                            <i class="fa-solid fa-truck-fast"></i>
+
+                            <span>
+
+                                ارسال رایگان برای سفارش‌های بالای ۵ میلیون تومان
+
+                            </span>
+
+                        </div>
+
+                        <h2 class="summary-title">
+
+                            خلاصه سفارش
+
+                        </h2>
+
+                        <div class="summary-row">
+
+                            <span>
+                                قیمت کالاها
+                            </span>
+
+                            <span id="subtotal-price">
+                                {{ cart.subtotal|intcomma }} تومان
+                            </span>
+
+                        </div>
+
+                        <div class="summary-row">
+
+                            <span>
+                                تخفیف
+                            </span>
+
+                            <span class="discount-price" id="discount-price">
+                                {{ cart.total_discount|intcomma }}
+                                 تومان
+                            </span>
+
+                        </div>
+
+                        <div class="summary-row">
+
+                            <span>
+                                هزینه ارسال
+                            </span>
+
+                            <span id="shipping-price">
+
+                                {% if cart.shipping_cost == 0 %}
+
+                                    <span >
+
+                                        رایگان
+
+                                    </span>
+
+                                    {% else %}
+
+                                    <span>
+
+                                        {{ cart.shipping_cost|intcomma }}
+
+                                        تومان
+
+                                    </span>
+
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="summary-row total-price">
+
+                            <span>
+
+                                مبلغ قابل پرداخت
+
+                            </span>
+
+                            <span id="final-price">
+
+                                 {{ cart.final_price|intcomma }} تومان
+
+                            </span>
+
+                        </div>
+
+                        <div class="coupon-box">
+
+                            <input
+                                type="text"
+                                placeholder="کد تخفیف">
+
+                            <button>
+
+                                اعمال
+
+                            </button>
+
+                        </div>
+
+                        <a href="{% url 'checkout' %}" class="checkout-btn">
+
+                            ادامه فرآیند خرید
+
+                        </a>
+
+                    </div>
+
+                </aside>
+
+            </div>
+        {% else %}
+            <!-- حالت سبد خالی -->
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h2>
+
+                    سبد خرید شما خالی است
+
+                </h2>
+
+                <p>
+
+                    هنوز محصولی به سبد خرید اضافه نکرده‌اید.
+
+                </p>
+
+                <a href="{% url 'product_list' %}">
+
+                    مشاهده محصولات
+
+                </a>
+
+            </div>
+        {% endif %}
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block ex_js %}
+<script src="{% static 'js/cart/cart.js' %}"></script>
+{% endblock %}

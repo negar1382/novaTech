@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Product List {% endblock %}
+{% block head %}
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home/product_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-title">{{ title }}</h1>
+        <div class="sort-bar">
+            <span class="sort-title">
+                <i class="fa-solid fa-arrow-down-wide-short"></i>
+                مرتب‌سازی:
+            </span>
+
+            <a href="{{ current_path }}?sort=newest"
+               class="sort-link {% if sort == 'newest' %}active{% endif %}">
+                جدیدترین
+            </a>
+
+            <a href="{{ current_path }}?sort=popular"
+               class="sort-link {% if sort == 'popular' %}active{% endif %}">
+                محبوب‌ترین
+            </a>
+
+            <a href="{{ current_path }}?sort=cheap"
+               class="sort-link {% if sort == 'cheap' %}active{% endif %}">
+                ارزان‌ترین
+            </a>
+
+            <a href="{{ current_path }}?sort=expensive"
+               class="sort-link {% if sort == 'expensive' %}active{% endif %}">
+                گران‌ترین
+            </a>
+
+        </div>
+
+        <div class="products-list">
+            {% for product in products %}
+                <div class="product-card">
+
+                    <!-- بخش راست: عکس + نشانگر تخفیف بیضی + نام و برند -->
+                    <div class="product-main-info">
+                        <div class="product-image-box">
+                            {% if product.images.all %}
+                                <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/150" alt="{{ product.name }}">
+                            {% endif %}
+                        </div>
+                        <div class="product-details">
+                            {% if product.discount_price and product.discount_percent > 0 %}
+                                <div class="discount-pill-badge">
+                                    تخفیف {{ product.discount_percent }}%
+                                </div>
+                            {% endif %}
+
+                            <h2 class="product-title"><a href="{% url 'product_detail' product.slug%}">{{ product.name }}</a></h2>
+
+                            {% if product.brand %}
+                                <span class="product-subtitle">{{ product.brand.name }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <!-- دسته بندی اصلی -->
+                    <div class="info-col">
+                        دسته: {{ product.category.name }}
+                    </div>
+
+                    <!-- زیردسته -->
+                    <div class="info-col">
+                        {% if product.subcategory %}
+                            زیردسته: {{ product.subcategory.name }}
+                        {% endif %}
+                    </div>
+
+                    <!-- موجودی -->
+                    <div class="info-col">
+                        موجودی: {{ product.stock }}
+                    </div>
+
+                    <!-- قیمت و تخفیف -->
+                    <div class="price-section">
+                        {% if product.discount_price %}
+                            <!-- در صورت وجود تخفیف -->
+                            <div class="current-price">
+                                {{ product.discount_price|intcomma }}
+                            </div>
+                            <div class="old-price-row">
+                                <span class="old-price">{{product.price|intcomma}}</span>
+                                <span class="discount-badge">% {{ product.discount_percent }}</span>
+                            </div>
+                        {% else %}
+                            <!-- حالت عادی بدون تخفیف -->
+                            <div class="current-price">
+                                {{ product.price|intcomma }}
+                            </div>
+                            <span class="currency">تومان</span>
+                        {% endif %}
+                    </div>
+
+                </div>
+            {% empty %}
+                <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+                    محصولی در این دسته‌بندی یافت نشد.
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {#    صفحه بندی #}
+    {% if products.has_other_pages %}
+    <div class="pagination-wrapper">
+        <ul class="pagination">
+
+            {# دکمه قبلی #}
+            {% if products.has_previous %}
+                <li>
+                    <a href="?page={{ products.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}"
+                       class="page-link">
+                        &laquo; قبلی
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <span class="page-link">&laquo; قبلی</span>
+                </li>
+            {% endif %}
+
+            {# شماره صفحات #}
+            {% for num in page_range %}
+                {% if products.number == num %}
+                    <li class="active">
+                        <span class="page-link">{{ num }}</span>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="?page={{ num }}{% if sort %}&sort={{ sort }}{% endif %}"
+                           class="page-link">
+                            {{ num }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {# اگر صفحات بیشتری وجود داشت #}
+            {% if page_range.stop|add:"-1" < total_pages %}
+                <li class="disabled">
+                    <span class="page-link dots">...</span>
+                </li>
+
+                <li>
+                    <a href="?page={{ total_pages }}{% if sort %}&sort={{ sort }}{% endif %}"
+                       class="page-link">
+                        {{ total_pages }}
+                    </a>
+                </li>
+            {% endif %}
+
+            {# دکمه بعدی #}
+            {% if products.has_next %}
+                <li>
+                    <a href="?page={{ products.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}"
+                       class="page-link">
+                        بعدی &raquo;
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <span class="page-link">
+                        بعدی &raquo;
+                    </span>
+                </li>
+            {% endif %}
+
+        </ul>
+    </div>
+{% endif %}
+{% endblock %}

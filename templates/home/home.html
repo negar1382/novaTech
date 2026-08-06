@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}NovaTech{% endblock %}
+{% block head %}
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    {% include 'home/includes/first_pictuer.html' %}
+    {% include 'home/includes/list_type.html' %}
+    {% include 'home/includes/wonder_box.html' %}
+    {% include 'home/includes/newest_product.html' %}
+    {% include 'home/includes/favorite.html' %}
+    {% include 'blog/article.html' %}
+    {% include 'home/includes/brand.html' %}
+{% endblock %}
+
+{% block ex_js %}
+    <script src="{% static 'js/home/wonder_box.js' %}"></script>
+    <script src="{% static 'js/home/newest_product.js' %}"></script>
+    <script src="{% static 'js/home/favorite.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "auth_base.html" %}
+
+{% block title %}
+تایید کد ورود
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-header">
+
+    <h1 class="auth-title">
+        تایید کد ورود
+    </h1>
+
+    <p class="auth-description">
+        کد ارسال شده را وارد کنید
+    </p>
+
+</div>
+
+<form method="post" class="auth-form">
+
+    {% csrf_token %}
+
+    <div class="input-group">
+        <i class="fa-solid fa-key"></i>
+        {{ form.code }}
+    </div>
+
+    {% if form.code.errors %}
+        <div class="error-message">
+            {{ form.code.errors }}
+        </div>
+    {% endif %}
+
+    <button class="auth-btn">
+        ورود
+    </button>
+
+</form>
+
+{% endblock %}

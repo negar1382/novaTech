@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/blog/detail_article.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="article-detail-container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="/">خانه</a>
+        <span>/</span>
+
+        <a href="{% url 'article_list' %}">
+            مقالات
+        </a>
+
+        <span>/</span>
+
+        <span>{{ article.title }}</span>
+    </nav>
+
+
+    <!-- اطلاعات مقاله -->
+
+    <div class="article-detail-header">
+
+        <h1>{{ article.title }}</h1>
+
+        <div class="article-meta">
+
+            <span>
+                <i class="fa-solid fa-user"></i>
+                {{ article.author }}
+            </span>
+
+            <span>
+                <i class="fa-regular fa-calendar"></i>
+                {{ article.created_at|date:"Y/m/d" }}
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- تصویر مقاله -->
+    <div class="article-detail-image">
+
+        {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}">
+        {% endif %}
+
+    </div>
+
+
+    <!-- متن مقاله -->
+
+    <div class="article-content-box">
+
+        {{ article.content|safe }}
+
+    </div>
+
+
+    <!-- آخرین مقالات -->
+
+    {% if latest_articles %}
+
+    <section class="latest-articles">
+
+        <h2>آخرین مقالات</h2>
+
+        <div class="latest-articles-grid">
+
+            {% for item in latest_articles %}
+
+                <article class="latest-card">
+
+                    <a href="{% url 'article_detail' item.slug %}">
+
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+
+                    </a>
+
+                    <div class="latest-card-body">
+
+                        <h3>
+
+                            <a href="{% url 'article_detail' item.slug %}">
+                                {{ item.title }}
+                            </a>
+
+                        </h3>
+
+                        <span>
+
+                            {{ item.created_at|date:"Y/m/d" }}
+
+                        </span>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

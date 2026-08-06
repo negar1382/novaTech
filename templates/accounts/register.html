@@ -1,0 +1,89 @@
+{% extends "auth_base.html" %}
+
+
+{% block title %}
+ثبت نام | NovaTech
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="auth-header">
+
+    <h1 class="auth-title">
+        ایجاد حساب کاربری
+    </h1>
+
+
+    <p class="auth-description">
+
+        برای ثبت نام شماره موبایل خود را وارد کنید
+
+    </p>
+
+</div>
+
+
+
+<form method="post" class="auth-form">
+
+    {% csrf_token %}
+
+
+    <div class="input-group">
+
+        <i class="fa-solid fa-phone"></i>
+
+
+        {{ form.phone_number }}
+
+
+    </div>
+
+
+
+    {% if form.phone_number.errors %}
+
+        <div class="error-message">
+
+            {{ form.phone_number.errors }}
+
+        </div>
+
+    {% endif %}
+
+
+
+    <button type="submit" class="auth-btn">
+
+        دریافت کد تایید
+
+    </button>
+
+
+</form>
+
+
+<div class="auth-links">
+
+
+    <span>
+        قبلاً ثبت نام کرده‌اید؟
+    </span>
+
+
+
+    <a href="{% url 'login' %}">
+
+        ورود
+
+    </a>
+
+
+</div>
+
+
+
+{% endblock %}

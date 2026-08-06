@@ -1,0 +1,223 @@
+{% extends "accounts/profile_base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+سفارش‌های من
+{% endblock %}
+
+{% block ex_style %}
+<link rel="stylesheet" href="{% static 'css/orders/my_orders.css' %}">
+{% endblock %}
+
+{% block profile_content %}
+
+<section class="orders-page">
+
+    <div class="orders-container">
+
+        <!-- عنوان صفحه -->
+
+        <div class="orders-header">
+
+            <div>
+
+                <h1>
+                    سفارش‌های من
+                </h1>
+
+                <p>
+                    لیست تمام سفارش‌هایی که تاکنون ثبت کرده‌اید.
+                </p>
+
+            </div>
+
+            <a href="{% url 'home' %}" class="continue-shopping">
+
+                <i class="fa-solid fa-store"></i>
+
+                ادامه خرید
+
+            </a>
+
+        </div>
+
+        {% if orders %}
+
+            <div class="orders-list">
+
+                {% for order in orders %}
+
+                <div class="order-card">
+
+                    <!-- بالا -->
+
+                    <div class="order-top">
+
+                        <div>
+
+                            <span class="order-number">
+
+                                سفارش
+
+                                #{{ order.id }}
+
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            {% if order.status == "pending" %}
+
+                                <span class="status pending">
+
+                                    در انتظار بررسی
+
+                                </span>
+
+                            {% elif order.status == "processing" %}
+
+                                <span class="status processing">
+
+                                    در حال آماده سازی
+
+                                </span>
+
+                            {% elif order.status == "shipping" %}
+
+                                <span class="status shipping">
+
+                                    ارسال شده
+
+                                </span>
+
+                            {% elif order.status == "delivered" %}
+
+                                <span class="status delivered">
+
+                                    تحویل داده شده
+
+                                </span>
+
+                            {% elif order.status == "cancelled" %}
+
+                                <span class="status cancelled">
+
+                                    لغو شده
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="status">
+
+                                    {{ order.get_status_display }}
+
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <!-- وسط -->
+
+                    <div class="order-body">
+
+                        <div class="order-info">
+
+                            <i class="fa-regular fa-calendar"></i>
+
+                            <span>
+
+                                {{ order.created_at|date:"Y/m/d" }}
+
+                            </span>
+
+                        </div>
+
+                        <div class="order-info">
+
+                            <i class="fa-solid fa-box"></i>
+
+                            <span>
+
+                                {{ order.items.count }}
+
+                                کالا
+
+                            </span>
+
+                        </div>
+
+                        <div class="order-info">
+
+                            <i class="fa-solid fa-wallet"></i>
+
+                            <strong>
+
+                                {{ order.total_price|intcomma }}
+
+                                تومان
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <!-- پایین -->
+
+                    <div class="order-footer">
+
+                        <a href="{% url 'order_detail' order.id %}" class="details-btn">
+
+                            مشاهده جزئیات
+
+                            <i class="fa-solid fa-angle-left"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-orders">
+
+                <i class="fa-solid fa-box-open"></i>
+
+                <h2>
+
+                    هنوز سفارشی ثبت نکرده‌اید
+
+                </h2>
+
+                <p>
+
+                    بعد از ثبت اولین سفارش، سوابق خرید شما در این قسمت نمایش داده می‌شود.
+
+                </p>
+
+                <a href="{% url 'home' %}" class="shop-btn">
+
+                    مشاهده محصولات
+
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

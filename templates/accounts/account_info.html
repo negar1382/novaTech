@@ -1,0 +1,56 @@
+{% extends "accounts/profile_base.html" %}
+{% load static %}
+
+{% block ex_style %}
+<link rel="stylesheet" href="{% static 'css/accounts/account_info.css' %}">
+{% endblock %}
+
+{% block profile_content %}
+
+<div class="account-info-page">
+
+    <div class="account-card">
+
+        <h2 class="account-title">
+            اطلاعات حساب کاربری
+        </h2>
+
+        <div class="info-item">
+            <span>نام کاربری</span>
+            <strong>{{ request.user.username }}</strong>
+        </div>
+
+        <div class="info-item">
+            <span>شماره همراه</span>
+            <strong>{{ request.user.profile.phone_number }}</strong>
+        </div>
+
+        <div class="info-item">
+            <span>نام</span>
+            <strong>{{ request.user.first_name|default:"ثبت نشده" }}</strong>
+        </div>
+
+        <div class="info-item">
+            <span>نام خانوادگی</span>
+            <strong>{{ request.user.last_name|default:"ثبت نشده" }}</strong>
+        </div>
+
+        <div class="info-item">
+            <span>ایمیل</span>
+            <strong>{{ request.user.email|default:"ثبت نشده" }}</strong>
+        </div>
+
+        <div class="account-actions">
+
+            <a href="{% url 'edit_profile' %}" class="edit-profile-btn">
+                ویرایش اطلاعات
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

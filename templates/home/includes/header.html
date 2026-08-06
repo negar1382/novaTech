@@ -1,0 +1,183 @@
+{% load static %}
+{#<head>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">#}
+{#    <link rel="stylesheet" href="{% static 'css/home/home_style.css' %}">#}
+{#</head>#}
+
+
+{% block head %}
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/home/home_style.css' %}">
+{% endblock %}
+<header>
+    <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/home/logo1.png' %}"></a>
+        </div>
+        <!-- Categories -->
+        <div class="items">
+            <div class="categories">
+                <button class="category-btn">
+                    <i class="fa-solid fa-bars"></i>
+                    دسته بندی محصولات
+                    <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <div class="mega-menu">
+
+                    {% for category in categories %}
+
+                        <div class="mega-item">
+
+                            <!-- دسته اصلی -->
+                            <div class="mega-title">
+
+                                <a href="{% url 'category_products' category.id %}">
+                                    {{ category.name }}
+                                </a>
+
+                                <i class="fa-solid fa-angle-left"></i>
+
+                            </div>
+
+                            <!-- پنل باز شونده -->
+                            <div class="mega-dropdown">
+
+                                {% for subcategory in category.subcategories.all %}
+
+                                    <div class="mega-section">
+
+                                        <h4>
+
+                                            <a href="{% url 'subcategory_products' subcategory.id %}">
+
+                                                {{ subcategory.name }}
+
+                                                <i class="fa-solid fa-angle-left"></i>
+
+                                            </a>
+
+                                        </h4>
+
+                                        <div class="mega-brands">
+
+                                            {% for brand in subcategory.brands.all %}
+
+                                                <a href="{% url 'brand_products' brand.id %}">
+
+                                                    {{ brand.name }}
+
+                                                </a>
+
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="blog">
+                <a href="{% url 'article_list' %}">مقالات</a>
+            </div>
+            <div class="help">
+                <a href="{% url 'article_detail' slug="shtbht-rg-hnm-khrd-mhsolt-dgtl-o-rhh-glor-z-nh"%}">راهنمای خرید</a>
+            </div>
+            <!-- Search -->
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>جستجو</span>
+            </div>
+        </div>
+        <!-- User -->
+        <div class="user-section">
+
+
+            {% if user.is_authenticated %}
+
+
+                <div class="header-actions">
+
+                    <a href="{% url 'cart' %}" class="cart-btn">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        <span class="cart-badge" id="cart-badge">{{ cart.total_items }}</span>
+
+                    </a>
+
+                    <div class="user-dropdown">
+
+                        <button class="user-btn">
+
+                            <div class="user-avatar">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                            <span class="user-name">
+                                {{ user.username }}
+                            </span>
+
+                            <i class="fa-solid fa-angle-down"></i>
+
+                        </button>
+
+                        <div class="user-menu">
+
+                            <a href="{% url 'profile' %}">
+                                <i class="fa-solid fa-user"></i>
+                                حساب کاربری
+                            </a>
+
+                            <a href="{% url 'my_orders' %}">
+                                <i class="fa-solid fa-box"></i>
+                                سفارش‌های من
+                            </a>
+
+                            <a href="{% url 'logout' %}">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                خروج
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            {% else %}
+
+
+
+                <a href="{% url 'login' %}">
+                    ورود
+                </a>
+
+
+                <span>|</span>
+
+
+                <a href="{% url 'register' %}">
+                    ثبت نام
+                </a>
+
+
+
+            {% endif %}
+
+
+
+        </div>
+    </div>
+</header>

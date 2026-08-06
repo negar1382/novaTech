@@ -1,0 +1,389 @@
+{% extends "accounts/profile_base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+جزئیات سفارش
+{% endblock %}
+
+{% block ex_style %}
+<link rel="stylesheet" href="{% static 'css/orders/my_orders.css' %}">
+{% endblock %}
+
+{% block profile_content %}
+
+<section class="order-detail-page">
+
+    <div class="order-detail-container">
+
+        <!-- Header -->
+
+        <div class="detail-header">
+
+            <div>
+
+                <h1>
+
+                    سفارش
+
+                    #{{ order.id }}
+
+                </h1>
+
+                <p>
+
+                    ثبت شده در
+
+                    {{ order.created_at|date:"Y/m/d - H:i" }}
+
+                </p>
+
+            </div>
+
+            <a href="{% url 'my_orders' %}" class="back-orders">
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+                بازگشت به سفارش‌ها
+
+            </a>
+
+
+        </div>
+
+        <!-- وضعیت سفارش -->
+
+        <div class="status-card">
+
+            <h3>
+
+                وضعیت سفارش
+
+            </h3>
+            {% if order.status != "cancelled" %}
+
+                <div class="status-timeline">
+
+                    <div class="step {% if status_step >= 1 %}active{% endif %}">
+
+                        <div class="circle">
+                            ✓
+                        </div>
+
+                        <span>
+                            ثبت سفارش
+                        </span>
+
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="step {% if status_step >= 2 %}active{% endif %}">
+
+                        <div class="circle">
+                            2
+                        </div>
+
+                        <span>
+                            آماده سازی
+                        </span>
+
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="step {% if status_step >= 3 %}active{% endif %}">
+
+                        <div class="circle">
+                            3
+                        </div>
+
+                        <span>
+                            ارسال
+                        </span>
+
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="step {% if status_step >= 4 %}active{% endif %}">
+
+                        <div class="circle">
+                            ✓
+                        </div>
+
+                        <span>
+                            تحویل
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% else %}
+
+                <div class="cancel-box">
+
+                    <i class="fa-solid fa-circle-xmark"></i>
+
+                    <div>
+
+                        <strong>این سفارش لغو شده است.</strong>
+
+                        <p>در صورت نیاز می‌توانید دوباره سفارش خود را ثبت کنید.</p>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <!-- اطلاعات سفارش -->
+
+        <div class="detail-grid">
+
+            <div class="receiver-card">
+
+                <h3>
+
+                    اطلاعات گیرنده
+
+                </h3>
+
+                <div class="info-row">
+
+                    <span>
+
+                        نام
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.first_name }}
+
+                        {{ order.last_name }}
+
+                    </strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>
+
+                        شماره تماس
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.phone }}
+
+                    </strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>
+
+                        شهر
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.city }}
+
+                    </strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>
+
+                        آدرس
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.address }}
+
+                    </strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>
+
+                        کد پستی
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.postal_code }}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="price-card">
+
+                <h3>
+
+                    خلاصه سفارش
+
+                </h3>
+
+                <div class="info-row">
+
+                    <span>
+
+                        مبلغ سفارش
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.total_price|intcomma }}
+
+                        تومان
+
+                    </strong>
+
+                </div>
+
+                <div class="info-row">
+
+                    <span>
+
+                        وضعیت
+
+                    </span>
+
+                    <strong>
+
+                        {{ order.get_status_display }}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- محصولات سفارش -->
+
+        <div class="products-card">
+
+            <h2>
+
+                محصولات سفارش
+
+            </h2>
+        {% for item in order.items.all %}
+
+<div class="ordered-product">
+
+    <div class="ordered-image">
+
+{#        {% if item.product.images.firs %}#}
+
+            <img src="{{ item.product.images.first.image.url }}" alt="{{ item.product.name }}">
+
+{#        {% endif %}#}
+
+    </div>
+
+    <div class="ordered-info">
+
+        <h3>
+
+            {{ item.product.name }}
+
+        </h3>
+
+        {% if item.product.brand %}
+
+        <p class="ordered-brand">
+
+            {{ item.product.brand }}
+
+        </p>
+
+        {% endif %}
+
+        <div class="ordered-meta">
+
+            <span>
+
+                تعداد:
+                <strong>{{ item.quantity }}</strong>
+
+            </span>
+
+            <span>
+
+                قیمت واحد:
+
+                <strong>
+
+                    {{ item.price|intcomma }}
+
+                    تومان
+
+                </strong>
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="ordered-total">
+
+        <span>
+
+            جمع
+
+        </span>
+
+        <strong>
+
+            {{ item.total_price|intcomma }}
+
+            تومان
+
+        </strong>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="empty-products">
+
+    محصولی برای این سفارش پیدا نشد.
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+
+<h1>ارسال ایمیل</h1>
+
+<p>گیرندگان:</p>
+
+<ul>
+    {% for subscriber in subscribers %}
+        <li>{{ subscriber.email }}</li>
+    {% endfor %}
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="default">
+        ارسال ایمیل
+    </button>
+</form>
+
+{% endblock %}

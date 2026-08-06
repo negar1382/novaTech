@@ -1,0 +1,175 @@
+{% extends "auth_base.html" %}
+
+
+{% block title %}
+
+تکمیل ثبت نام | NovaTech
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="auth-header">
+
+
+    <h1 class="auth-title">
+
+        تکمیل ثبت نام
+
+    </h1>
+
+
+
+    <p class="auth-description">
+
+        اطلاعات حساب کاربری خود را وارد کنید
+
+    </p>
+
+
+</div>
+
+
+
+
+<form method="post" class="auth-form">
+
+
+    {% csrf_token %}
+
+
+
+    <div class="input-group">
+
+        <i class="fa-solid fa-user"></i>
+
+        {{ form.username }}
+
+    </div>
+
+
+    {% if form.username.errors %}
+
+        <div class="error-message">
+
+            {{ form.username.errors }}
+
+        </div>
+
+    {% endif %}
+
+
+
+
+    <div class="input-group">
+
+        <i class="fa-solid fa-envelope"></i>
+
+        {{ form.email }}
+
+    </div>
+
+
+    {% if form.email.errors %}
+
+        <div class="error-message">
+
+            {{ form.email.errors }}
+
+        </div>
+
+    {% endif %}
+
+
+
+
+    <div class="input-group">
+
+        <i class="fa-solid fa-lock"></i>
+
+        {{ form.password }}
+
+    </div>
+
+
+    {% if form.password.errors %}
+
+        <div class="error-message">
+
+            {{ form.password.errors }}
+
+        </div>
+
+    {% endif %}
+
+
+
+
+
+    <div class="input-group">
+
+        <i class="fa-solid fa-lock"></i>
+
+        {{ form.confirm_password }}
+
+    </div>
+
+
+    {% if form.confirm_password.errors %}
+
+        <div class="error-message">
+
+            {{ form.confirm_password.errors }}
+
+        </div>
+
+    {% endif %}
+
+
+
+
+
+    {% if form.non_field_errors %}
+
+        <div class="error-message">
+
+            {{ form.non_field_errors }}
+
+        </div>
+
+    {% endif %}
+
+
+
+
+    <button type="submit" class="auth-btn">
+
+        ساخت حساب کاربری
+
+    </button>
+
+
+
+</form>
+
+
+
+
+<div class="auth-links">
+
+
+    <a href="{% url 'home' %}">
+
+        بازگشت به صفحه اصلی
+
+    </a>
+
+
+</div>
+
+
+
+{% endblock %}

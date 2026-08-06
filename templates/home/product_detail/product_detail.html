@@ -1,0 +1,1025 @@
+{#{% extends 'base.html' %}#}
+{#{% load static %}#}
+{##}
+{#{% block content %}#}
+{#<section class="product-detail-page">#}
+{##}
+{#    <div class="container">#}
+{##}
+{#        <!-- مسیر -->#}
+{#        <div class="breadcrumb">#}
+{#            <nav class="breadcrumb">#}
+{##}
+{#                <a href="/">خانه</a>#}
+{##}
+{#                <span>/</span>#}
+{##}
+{#                <span>جزئیات محصول</span>#}
+{##}
+{#            </nav>#}
+{#        </div>#}
+{##}
+{#        <!-- بخش اصلی -->#}
+{#        <div class="product-main">#}
+{##}
+{#            <!-- گالری تصاویر -->#}
+{#            <div class="product-gallery">#}
+{#                <div class="product-gallery">#}
+{##}
+{#                    <!-- تصویر اصلی -->#}
+{#                    <div class="main-image">#}
+{##}
+{#                        {% if product.images.first %}#}
+{##}
+{#                            <img#}
+{#                                id="mainProductImage"#}
+{#                                src="{{ product.images.first.image.url }}"#}
+{#                                alt="{{ product.name }}">#}
+{##}
+{#                        {% else %}#}
+{##}
+{#                            <img#}
+{#                                id="mainProductImage"#}
+{#                                src="{% static 'images/home/images.jpg' %}"#}
+{#                                alt="بدون تصویر">#}
+{##}
+{#                        {% endif %}#}
+{##}
+{#                    </div>#}
+{##}
+{#                    <!-- تصاویر کوچک -->#}
+{#                    <div class="thumbnail-images">#}
+{##}
+{#                        {% for image in product.images.all %}#}
+{##}
+{#                            <img#}
+{#                                src="{{ image.image.url }}"#}
+{#                                alt="{{ product.name }}"#}
+{#                                class="thumbnail">#}
+{##}
+{#                        {% endfor %}#}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <!-- اطلاعات -->#}
+{#            <div class="product-info">#}
+{#                <h1 class="product-title">#}
+{##}
+{#                    {{ product.name }}#}
+{##}
+{#                </h1>#}
+{#                <div class="product-meta">#}
+{##}
+{#                    <div class="meta-item">#}
+{##}
+{#                        <span>برند</span>#}
+{##}
+{#                        <strong>#}
+{##}
+{#                            {{ product.brand.name }}#}
+{##}
+{#                        </strong>#}
+{##}
+{#                    </div>#}
+{##}
+{#                    <div class="meta-item">#}
+{##}
+{#                        <span>دسته بندی</span>#}
+{##}
+{#                        <strong>#}
+{##}
+{#                            {{ product.category.name }}#}
+{##}
+{#                        </strong>#}
+{##}
+{#                    </div>#}
+{##}
+{#                    {% if product.subcategory %}#}
+{##}
+{#                    <div class="meta-item">#}
+{##}
+{#                        <span>زیر دسته</span>#}
+{##}
+{#                        <strong>#}
+{##}
+{#                            {{ product.subcategory.name }}#}
+{##}
+{#                        </strong>#}
+{##}
+{#                    </div>#}
+{##}
+{#                    {% endif %}#}
+{##}
+{#                </div>#}
+{##}
+{#                {% if product.stock > 0 %}#}
+{##}
+{#                    <div class="stock-box in-stock">#}
+{##}
+{#                        <i class="fa-solid fa-circle-check"></i>#}
+{##}
+{#                        موجود در انبار#}
+{##}
+{#                    </div>#}
+{##}
+{#                    {% else %}#}
+{##}
+{#                    <div class="stock-box out-stock">#}
+{##}
+{#                        <i class="fa-solid fa-circle-xmark"></i>#}
+{##}
+{#                        ناموجود#}
+{##}
+{#                    </div>#}
+{##}
+{#                {% endif %}#}
+{##}
+{#                <div class="product-price-box">#}
+{##}
+{#                    {% if product.discount_price %}#}
+{##}
+{#                        <div class="old-price">#}
+{##}
+{#                            {{ product.price }}#}
+{##}
+{#                            تومان#}
+{##}
+{#                        </div>#}
+{##}
+{#                        <div class="price-row">#}
+{##}
+{#                            <span class="discount-badge">#}
+{##}
+{#                                {{ product.discount_percent }}%#}
+{##}
+{#                            </span>#}
+{##}
+{#                            <span class="current-price">#}
+{##}
+{#                                {{ product.discount_price }}#}
+{##}
+{#                                تومان#}
+{##}
+{#                            </span>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    {% else %}#}
+{##}
+{#                        <div class="current-price">#}
+{##}
+{#                            {{ product.price }}#}
+{##}
+{#                            تومان#}
+{##}
+{#                        </div>#}
+{##}
+{#                    {% endif %}#}
+{##}
+{#                </div>#}
+{##}
+{#                <div class="quantity-section">#}
+{##}
+{#                    <span>#}
+{##}
+{#                        تعداد#}
+{##}
+{#                    </span>#}
+{##}
+{#                    <div class="quantity-box">#}
+{##}
+{#                        <button>#}
+{##}
+{#                            +#}
+{##}
+{#                        </button>#}
+{##}
+{#                        <span>#}
+{##}
+{#                            1#}
+{##}
+{#                        </span>#}
+{##}
+{#                        <button>#}
+{##}
+{#                            -#}
+{##}
+{#                        </button>#}
+{##}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{##}
+{#                <a href="#"#}
+{##}
+{#                class="add-cart-btn">#}
+{##}
+{#                <i class="fa-solid fa-cart-shopping"></i>#}
+{##}
+{#                افزودن به سبد خرید#}
+{##}
+{#                </a>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{##}
+{#        <!-- تب ها -->#}
+{#        <div class="product-tabs">#}
+{#            <div class="product-description">#}
+{##}
+{#                <h2>#}
+{##}
+{#                    توضیحات محصول#}
+{##}
+{#                </h2>#}
+{#                <div class="product-specifications">#}
+{##}
+{#                    <h2>#}
+{##}
+{#                        مشخصات محصول#}
+{##}
+{#                    </h2>#}
+{##}
+{#                    <table class="spec-table">#}
+{##}
+{#                        <tr>#}
+{##}
+{#                            <th>نام محصول</th>#}
+{##}
+{#                            <td>{{ product.name }}</td>#}
+{##}
+{#                        </tr>#}
+{##}
+{#                        <tr>#}
+{##}
+{#                            <th>برند</th>#}
+{##}
+{#                            <td>#}
+{##}
+{#                                {% if product.brand %}#}
+{#                                    {{ product.brand.name }}#}
+{#                                {% else %}#}
+{#                                    -#}
+{#                                {% endif %}#}
+{##}
+{#                            </td>#}
+{##}
+{#                        </tr>#}
+{##}
+{#                        <tr>#}
+{##}
+{#                            <th>دسته بندی</th>#}
+{##}
+{#                            <td>{{ product.category.name }}</td>#}
+{##}
+{#                        </tr>#}
+{##}
+{#                        <tr>#}
+{##}
+{#                            <th>زیر دسته</th>#}
+{##}
+{#                            <td>#}
+{##}
+{#                                {% if product.subcategory %}#}
+{#                                    {{ product.subcategory.name }}#}
+{#                                {% else %}#}
+{#                                    -#}
+{#                                {% endif %}#}
+{##}
+{#                            </td>#}
+{##}
+{#                        </tr>#}
+{##}
+{#                        <tr>#}
+{##}
+{#                            <th>موجودی</th>#}
+{##}
+{#                            <td>{{ product.stock }}</td>#}
+{##}
+{#                        </tr>#}
+{##}
+{#                    </table>#}
+{##}
+{#                </div>#}
+{##}
+{#                <div class="description-content">#}
+{##}
+{#                    {{ product.description|linebreaks }}#}
+{##}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <!-- محصولات مرتبط -->#}
+{#        <section class="related-products">#}
+{#            <section class="related-products">#}
+{##}
+{#                <h2>#}
+{##}
+{#                    محصولات مرتبط#}
+{##}
+{#                </h2>#}
+{##}
+{#                <div class="related-products-grid">#}
+{##}
+{#                </div>#}
+{##}
+{##}
+{#            </section>#}
+{#        </section>#}
+{##}
+{#    </div>#}
+{##}
+{#</section>#}
+{##}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block ex_js %}<script src="{% static 'js/home/product_detail.js' %}"></script>{% endblock %}#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+{{ product.name }}
+{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home/product_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="product-detail-page">
+
+    <div class="container">
+
+
+
+        <!-- Product -->
+
+        <div class="product-main">
+
+            <!-- Gallery -->
+
+            <div class="product-gallery">
+
+                <div class="main-image">
+
+                    {% if product.images.first %}
+
+                        <img
+                            id="mainProductImage"
+                            src="{{ product.images.first.image.url }}"
+                            alt="{{ product.name }}">
+
+                    {% endif %}
+
+                </div>
+
+                <div class="thumbnail-images">
+
+                    {% for image in product.images.all %}
+
+                        <img
+                            src="{{ image.image.url }}"
+                            alt="{{ product.name }}"
+                            class="thumbnail">
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <!-- Product Info -->
+
+            <div class="product-info">
+
+                <h1 class="product-title">
+
+                    {{ product.name }}
+
+                </h1>
+
+                <div class="product-meta">
+
+                    {% if product.brand %}
+
+                    <div class="meta-item">
+
+                        <span>برند</span>
+
+                        <strong>
+
+                            {{ product.brand.name }}
+
+                        </strong>
+
+                    </div>
+
+                    {% endif %}
+
+                    <div class="meta-item">
+
+                        <span>دسته بندی</span>
+
+                        <strong>
+
+                            {{ product.category.name }}
+
+                        </strong>
+
+                    </div>
+
+                    {% if product.subcategory %}
+
+                    <div class="meta-item">
+
+                        <span>زیر دسته</span>
+
+                        <strong>
+
+                            {{ product.subcategory.name }}
+
+                        </strong>
+
+                    </div>
+
+                    {% endif %}
+                    <div class="meta-item">
+
+                        <span>لایک</span>
+
+                        <strong>
+
+                            <button class="wishlist-btn" id="like-btn" data-url="{% url 'toggle_product_like' product.id %}" data-csrf="{{ csrf_token }}">
+
+                                <i id="heart-icon" class="{% if liked %}fa-solid liked{% else %}fa-regular{% endif %} fa-heart"></i>
+
+                                <span id="like-text">
+                                    {{ product.likes }}
+                                </span>
+
+                            </button>
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+                {% if product.stock > 0 %}
+
+                <div class="stock-box in-stock">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    موجود در انبار
+
+                </div>
+
+                {% else %}
+
+                <div class="stock-box out-stock">
+
+                    <i class="fa-solid fa-circle-xmark"></i>
+
+                    ناموجود
+
+                </div>
+
+                {% endif %}
+
+                <div class="product-price-box">
+
+                    {% if product.discount_price %}
+
+                        <div class="old-price">
+
+                            {{ product.price|intcomma }}
+
+                            تومان
+
+                        </div>
+
+                        <div class="price-row">
+
+                            <span class="discount-badge">
+
+                                {{ product.discount_percent }}%
+
+                            </span>
+
+                            <span class="current-price">
+
+                                {{ product.discount_price|intcomma }}
+
+                                تومان
+
+                            </span>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="current-price">
+
+                            {{ product.price|intcomma }}
+
+                            تومان
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+                {% if product.stock == 0 %}
+
+                    <button class="add-cart-btn out-of-stock-btn" disabled>
+
+                        <i class="fa-solid fa-ban"></i>
+
+                        ناموجود
+
+                    </button>
+
+                    {% else %}
+
+                    <button
+                        type="button"
+                        class="add-cart-btn"
+                        id="add-cart-btn"
+                        data-url="{% url 'add_to_cart' product.id %}"
+                        data-csrf="{{ csrf_token }}"
+                        {% if cart_item %}style="display:none"{% endif %}
+                    >
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        افزودن به سبد خرید
+                    </button>
+
+                    <div
+                        class="quantity-section"
+                        id="quantity-section"
+                        {% if not cart_item %}style="display:none"{% endif %}
+                    >
+
+                        <span>تعداد</span>
+
+                        <div class="quantity-box">
+
+                            <button
+                                type="button"
+                                class="qty-btn"
+                                id="increase-btn"
+                                {% if cart_item %}
+                                data-url="{% url 'increase_quantity' cart_item.id %}"
+                                {% endif %}
+                                data-csrf="{{ csrf_token }}"
+                            >
+                                +
+                            </button>
+
+                            <span id="quantity-number">
+                                {% if cart_item %}
+                                    {{ cart_item.quantity }}
+                                {% else %}
+                                    1
+                                {% endif %}
+                            </span>
+
+                            <button
+                                type="button"
+                                class="qty-btn"
+                                id="decrease-btn"
+                                {% if cart_item %}
+                                data-url="{% url 'decrease_quantity' cart_item.id %}"
+                                {% endif %}
+                                data-csrf="{{ csrf_token }}"
+                            >
+                                -
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+{#                <button class="wishlist-btn" id="like-btn" data-url="{% url 'toggle_product_like' product.id %}" data-csrf="{{ csrf_token }}">#}
+{##}
+{#                    <i id="heart-icon" class="{% if liked %}fa-solid liked{% else %}fa-regular{% endif %} fa-heart"></i>#}
+{##}
+{#                    <span id="like-text">#}
+{#                        {{ product.likes }}#}
+{#                    </span>#}
+{##}
+{#                </button>#}
+
+                <div class="shop-features">
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+            <!-- ==========================
+                توضیحات محصول
+        =========================== -->
+
+        <section class="product-description">
+
+            <h2 class="section-title">
+
+                توضیحات محصول
+
+            </h2>
+
+            <div class="description-content">
+
+                {{ product.description|linebreaks }}
+
+            </div>
+
+        </section>
+
+
+        <!-- ==========================
+                مشخصات محصول
+        =========================== -->
+
+        <section class="product-specifications">
+
+            <h2 class="section-title">
+
+                مشخصات محصول
+
+            </h2>
+
+            <table class="spec-table">
+
+                <tbody>
+
+                    <tr>
+
+                        <th>
+
+                            نام محصول
+
+                        </th>
+
+                        <td>
+
+                            {{ product.name }}
+
+                        </td>
+
+                    </tr>
+
+                    {% if product.brand %}
+
+                    <tr>
+
+                        <th>
+
+                            برند
+
+                        </th>
+
+                        <td>
+
+                            {{ product.brand.name }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endif %}
+
+                    <tr>
+
+                        <th>
+
+                            دسته بندی
+
+                        </th>
+
+                        <td>
+
+                            {{ product.category.name }}
+
+                        </td>
+
+                    </tr>
+
+                    {% if product.subcategory %}
+
+                    <tr>
+
+                        <th>
+
+                            زیر دسته
+
+                        </th>
+
+                        <td>
+
+                            {{ product.subcategory.name }}
+
+                        </td>
+
+                    </tr>
+
+                    {% endif %}
+
+                    <tr>
+
+                        <th>
+
+                            موجودی
+
+                        </th>
+
+                        <td>
+
+                            {{ product.stock }}
+
+                            عدد
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <th>
+
+                            قیمت
+
+                        </th>
+
+                        <td>
+
+                            {% if product.discount_price %}
+
+                                {{ product.discount_price|intcomma }}
+
+                            {% else %}
+
+                                {{ product.price|intcomma }}
+
+                            {% endif %}
+
+                            تومان
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ==========================
+                    محصولات مرتبط
+            =========================== -->
+        <section class="comments-section">
+
+            <h2 class="comments-title">
+               نظرات کاربران ({{ comments_count }})
+            </h2>
+
+            {% if user.is_authenticated %}
+
+                <form method="post"
+                      action="{% url 'add_comment' product.id %}"
+                      class="comment-form">
+
+                    {% csrf_token %}
+
+                    {{ form.text }}
+
+                    <button type="submit"
+                            class="comment-submit-btn">
+
+                        ثبت دیدگاه
+
+                    </button>
+
+                </form>
+
+            {% else %}
+
+                <div class="login-comment-box">
+
+                    برای ثبت نظر ابتدا وارد حساب کاربری خود شوید.
+
+                </div>
+
+            {% endif %}
+
+
+            {% if comments %}
+
+                {% for comment in comments %}
+
+                    <div class="comment-card">
+
+                        <div class="comment-header">
+
+                            <div class="comment-user">
+
+                                <div class="comment-avatar">
+
+                                    {{ comment.user.username|first|upper }}
+
+                                </div>
+
+                                <strong>
+
+                                    {{ comment.user.username }}
+
+                                </strong>
+
+                            </div>
+
+                            <span>
+
+                                {{ comment.created_at|date:"Y/m/d H:i" }}
+
+                            </span>
+
+                        </div>
+                        <div class="comment-body">
+
+                            {{ comment.text|linebreaks }}
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="no-comments">
+
+                    <i class="fa-regular fa-comments"></i>
+
+                    <p>
+
+                        هنوز هیچ نظری برای این محصول ثبت نشده است.
+
+                    </p>
+
+                    <small>
+
+                        اولین نفری باشید که نظر خود را ثبت می‌کند.
+
+                    </small>
+
+                </div>
+
+            {% endif %}
+
+        </section>
+        <!-- ==========================
+                محصولات مرتبط
+        =========================== -->
+
+        <section class="related-products">
+
+            <div class="section-header">
+
+                <h2>
+
+                    محصولات مرتبط
+
+                </h2>
+
+            </div>
+
+            <div class="related-products-grid">
+
+                {% if related_products %}
+
+                    {% for item in related_products %}
+
+                        <div class="related-card">
+
+                            <a href="{% url 'product_detail' item.slug %}">
+
+                                {% if item.images.first %}
+
+                                    <img
+                                        src="{{ item.images.first.image.url }}"
+                                        alt="{{ item.name }}">
+
+                                {% else %}
+
+                                    <img
+                                        src="{% static 'images/no-image.png' %}"
+                                        alt="بدون تصویر">
+
+                                {% endif %}
+
+                                <h3>
+
+                                    {{ item.name }}
+
+                                </h3>
+
+                                <div class="related-price">
+
+                                    {% if item.discount_price %}
+
+                                        {{ item.discount_price|intcomma }}
+
+                                    {% else %}
+
+                                        {{ item.price|intcomma }}
+
+                                    {% endif %}
+
+                                    تومان
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p class="empty-related">
+
+                        محصول مرتبطی وجود ندارد.
+
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block ex_js %}
+
+<script src="{% static 'js/home/product_detail.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,323 @@
+:root {
+    --bg-color: #0b1120;
+    --card-bg: #111827;
+    --card-hover: #1f293d;
+    --text-main: #ffffff;
+    --text-muted: #9ca3af;
+    --text-sub: #6b7280;
+    --border-color: #1f2937;
+    --accent-red: #ef4444;
+    --badge-bg: #1d3326;
+    --badge-text: #4ade80;
+    --radius-main: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    /*padding:20px;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-right: 108px;
+    margin-top: 40px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-main);
+}
+
+.products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-main);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card:hover {
+    background-color: var(--card-hover);
+}
+
+/* بخش سمت راست: عکس و نام محصول */
+.product-main-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 2;
+}
+
+.product-image-box {
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+/* بج بیضی تخفیف بالای اسم محصول */
+.discount-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.discount-pill-badge::before {
+    content: "◆";
+    font-size: 0.65rem;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.product-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+/* بخش‌های میانی: دسته، زیردسته، موجودی */
+.info-col {
+    flex: 1;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* بخش سمت چپ: قیمت و تخفیف */
+.price-section {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.current-price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.currency {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: var(--text-sub);
+    margin-top: 4px;
+}
+
+.old-price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-sub);
+}
+
+.discount-badge {
+    color: var(--accent-red);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* صفحه بندی */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 10px 0;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 8px;
+    align-items: center;
+}
+
+.pagination li .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    background-color: #1e1e2d;
+    color: #a2a3b7;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #2b2b40;
+    transition: all 0.3s ease;
+}
+
+.pagination li a.page-link:hover {
+    background-color: #6c5ce7;
+    color: #ffffff;
+    border-color: #6c5ce7;
+    transform: translateY(-2px);
+}
+
+.pagination li.active .page-link {
+    background-color: #6c5ce7;
+    color: #ffffff;
+    border-color: #6c5ce7;
+    box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+}
+
+.pagination li.disabled .page-link {
+    background-color: #181824;
+    color: #4a4a65;
+    border-color: #222232;
+    cursor: not-allowed;
+}
+
+.pagination li .page-link.dots {
+    background-color: transparent;
+    border: none;
+    color: #a2a3b7;
+    letter-spacing: 2px;
+}
+/* ===== مرتب سازی ===== */
+
+.sort-bar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:30px;
+
+    padding:18px 22px;
+
+    background:#0d1424;
+
+    border:1px solid #1c2438;
+
+    border-radius:14px;
+
+}
+
+.sort-title{
+
+    color:#ffffff;
+
+    font-weight:700;
+
+}
+
+.sort-link{
+
+    text-decoration:none;
+
+    color:#b8c2d1;
+
+    padding:8px 16px;
+
+    border-radius:8px;
+
+    transition:.3s;
+
+}
+
+.sort-link:hover{
+
+    background:#1d2942;
+
+    color:#fff;
+
+}
+
+.sort-link.active{
+
+    background:#6d5ef7;
+
+    color:#fff;
+
+}
+
+/* پاسخگویی در موبایل (Responsive) */
+@media (max-width: 900px) {
+    .product-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .info-col {
+        text-align: right;
+    }
+    .price-section {
+        align-items: flex-start;
+    }
+}
+

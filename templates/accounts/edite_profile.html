@@ -1,0 +1,54 @@
+{% extends "accounts/profile_base.html" %}
+{% load static %}
+
+{% block ex_style %}
+    <link rel="stylesheet" href="{% static 'css/accounts/account_info.css' %}">
+{% endblock %}
+
+{% block profile_content %}
+
+<h2 class="account-title">
+    ویرایش اطلاعات
+</h2>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <div class="form-group">
+
+        {{ user_form.first_name.label_tag }}
+        {{ user_form.first_name }}
+
+    </div>
+
+    <div class="form-group">
+
+        {{ user_form.last_name.label_tag }}
+        {{ user_form.last_name }}
+
+    </div>
+
+    <div class="form-group">
+
+        {{ user_form.email.label_tag }}
+        {{ user_form.email }}
+
+    </div>
+
+    <div class="form-group">
+
+        {{ profile_form.phone_number.label_tag }}
+        {{ profile_form.phone_number }}
+
+    </div>
+
+    <button type="submit" class="save-btn">
+
+        ذخیره تغییرات
+
+    </button>
+
+</form>
+
+{% endblock %}

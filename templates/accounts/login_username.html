@@ -1,0 +1,165 @@
+{% extends "auth_base.html" %}
+
+
+
+{% block title %}
+
+ورود | NovaTech
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="auth-header">
+
+
+<h1 class="auth-title">
+
+ورود به حساب کاربری
+
+</h1>
+
+
+<p class="auth-description">
+
+نام کاربری و رمز عبور خود را وارد کنید
+
+</p>
+
+
+</div>
+
+
+
+
+
+<form method="post" class="auth-form">
+
+
+{% csrf_token %}
+
+
+
+
+<div class="input-group">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+{{ form.username }}
+
+
+</div>
+
+
+
+{% if form.username.errors %}
+
+<div class="error-message">
+
+{{ form.username.errors }}
+
+</div>
+
+{% endif %}
+
+
+
+
+
+<div class="input-group">
+
+
+<i class="fa-solid fa-lock"></i>
+
+
+{{ form.password }}
+
+
+</div>
+
+
+
+{% if form.password.errors %}
+
+<div class="error-message">
+
+{{ form.password.errors }}
+
+</div>
+
+{% endif %}
+
+
+
+
+
+{% if form.non_field_errors %}
+
+<div class="error-message">
+
+{{ form.non_field_errors }}
+
+</div>
+
+{% endif %}
+
+
+
+
+
+<button class="auth-btn">
+
+ورود
+
+</button>
+
+
+
+</form>
+
+<div class="login-method">
+
+    <span>
+        ورود با روش دیگر:
+    </span>
+
+
+    <a href="{% url 'phone_login' %}">
+
+        ورود با شماره موبایل
+
+    </a>
+
+</div>
+
+
+
+
+<div class="auth-links">
+
+
+<span>
+حساب ندارید؟
+</span>
+
+
+<a href="{% url 'register' %}">
+
+ثبت نام
+
+</a>
+
+
+
+</div>
+
+
+
+{% endblock %}

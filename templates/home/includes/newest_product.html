@@ -1,0 +1,99 @@
+{% load static %}
+{% load humanize %}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home/newest_product.css' %}">
+</head>
+
+<section class="new-arrivals" dir="rtl">
+  <div class="new-arrivals__container">
+
+    <!-- هدر بخش: عنوان سمت راست، مشاهده همه سمت چپ -->
+    <div class="new-arrivals__header">
+      <a href="{% url 'newest_products' %}" class="new-arrivals__view-all">مشاهده همه</a>
+
+      <div class="new-arrivals__title-wrap">
+        <h2 class="new-arrivals__title">تازه‌های فروشگاه</h2>
+        <span class="new-arrivals__title-bar"></span>
+      </div>
+    </div>
+
+    <!-- کاروسل محصولات -->
+    <div class="new-arrivals__carousel">
+
+      <button class="carousel-arrow carousel-arrow--right" type="button" aria-label="محصولات قبلی">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="new-arrivals__list">
+
+        <!-- محصول ۱ -->
+        {% for product in newest_products %}
+
+        <article class="na-card">
+
+            <div class="na-card__image">
+
+                {% if product.images.first %}
+                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                {% endif %}
+
+            </div>
+
+            <h3 class="na-card__title">
+                {{ product.name }}
+            </h3>
+
+            {% if product.discount_price %}
+
+                <div class="na-card__price-box">
+
+                    <div class="na-card__old-price-row">
+
+                        <span class="na-card__old-price">
+                            {{ product.price|intcomma }}
+                        </span>
+
+                        <span class="na-card__discount">
+                            {{ product.discount_percent }}٪
+                        </span>
+
+                    </div>
+
+                    <div class="na-card__price">
+                        {{ product.discount_price|intcomma }} تومان
+                    </div>
+
+                </div>
+
+            {% else %}
+
+    <div class="na-card__price">
+        {{ product.price|intcomma }} تومان
+    </div>
+
+{% endif %}
+
+            <a href="{% url 'product_detail' product.slug%}" class="na-card__btn">
+                مشاهده محصول
+            </a>
+
+        </article>
+
+        {% endfor %}
+
+      </div>
+
+      <button class="carousel-arrow carousel-arrow--left" type="button" aria-label="محصولات بعدی">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+

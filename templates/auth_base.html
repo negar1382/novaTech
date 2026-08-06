@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        {% block title %}
+            NovaTech
+        {% endblock %}
+
+    </title>
+
+    <!-- Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/accounts/auth.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- Background -->
+
+<div class="bg-circle circle-one"></div>
+<div class="bg-circle circle-two"></div>
+<div class="bg-circle circle-three"></div>
+
+<div class="auth-wrapper">
+
+    <!-- Logo -->
+
+    <a href="{% url 'home' %}" class="logo-box">
+
+        <img src="{% static 'images/home/logo1.png' %}"
+             alt="NovaTech">
+
+    </a>
+
+    <!-- Card -->
+
+    <div class="auth-card">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+    <!-- Footer -->
+
+    <div class="auth-footer">
+
+        <a href="{% url 'home' %}">
+
+            <i class="fa-solid fa-house"></i>
+
+            بازگشت به صفحه اصلی
+
+        </a>
+
+    </div>
+
+</div>
+
+{% block extra_js %}
+{% endblock %}
+
+</body>
+
+</html>

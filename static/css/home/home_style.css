@@ -1,0 +1,646 @@
+/* ==========================================================================
+   Fonts & Base
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-header: #101014;
+  --bg-menu: #19191d;
+  --bg-hover: #26262b;
+  --text-main: #e9e9ec;
+  --text-muted: #9a9aa4;
+  --border-color: #2d2d33;
+  --accent-green: #A287FE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+header{
+    width:101%;
+    background:#000717;
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:1px solid #99a1af;
+}
+
+.items{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.header-container{
+    width:90%;
+    height:64px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    /* justify-content:space-between; */
+}
+
+/* ==============================
+        LOGO
+================================ */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:0;
+    cursor:pointer;
+}
+
+.logo img{
+    width:180px;
+    height:73px;
+    object-fit:contain;
+  padding-top: 4px;
+}
+
+
+.items > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-main);
+  font-size: 14px;
+  cursor: pointer;
+  transition: color .15s ease;
+}
+
+.items > div:hover { color: var(--accent-green); }
+
+.search { margin-right: auto; }
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.user-section span { color: white; }
+.user-section a:hover { color: var(--accent-green); }
+
+
+
+
+
+/*=================================================
+                HEADER ACTIONS
+=================================================*/
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+/*=================================================
+                    CART
+=================================================*/
+
+.cart-btn{
+
+    position:relative;
+
+    width:46px;
+    height:46px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    background:#151b2d;
+
+    border:1px solid #2b3550;
+
+    transition:.25s;
+
+}
+
+.cart-btn i{
+
+    color:#fff;
+    font-size:19px;
+
+}
+
+.cart-btn:hover{
+
+    background:#1d2740;
+    border-color:#A287FE;
+
+}
+
+.cart-btn:hover i{
+
+    color:#A287FE;
+
+}
+
+/* badge */
+
+.cart-badge{
+
+    position:absolute;
+
+    top:-6px;
+    left:-6px;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    background:#A287FE;
+
+    color:#fff;
+
+    font-size:11px;
+    font-weight:700;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:2px solid #000717;
+
+}
+
+/*=================================================
+                USER BUTTON
+=================================================*/
+
+.user-dropdown{
+
+    position:relative;
+
+}
+
+.user-btn{
+
+    height:46px;
+
+    padding:0 14px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#151b2d;
+
+    border:1px solid #2b3550;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-family:inherit;
+    font-size:14px;
+
+    transition:.25s;
+
+}
+
+.user-btn:hover{
+
+    background:#1d2740;
+
+    border-color:#A287FE;
+
+}
+
+.user-avatar{
+
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    background:#A287FE;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#fff;
+
+    flex-shrink:0;
+
+}
+
+.user-name{
+
+    white-space:nowrap;
+
+    font-weight:500;
+
+}
+
+.user-btn .fa-angle-down{
+
+    font-size:12px;
+
+    transition:.25s;
+
+}
+
+.user-dropdown:hover .fa-angle-down{
+
+    transform:rotate(180deg);
+
+}
+
+/*=================================================
+                USER MENU
+=================================================*/
+
+.user-menu{
+
+    position:absolute;
+
+    top:56px;
+    left:0;
+
+    width:240px;
+
+    background:#111827;
+
+    border:1px solid #2b3550;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:.25s;
+
+    z-index:9999;
+
+}
+
+.user-dropdown:hover .user-menu{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+.user-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:14px 18px;
+
+    color:#fff;
+
+    font-size:14px;
+
+    transition:.2s;
+
+}
+
+.user-menu a i{
+
+    width:18px;
+
+    color:#9098af;
+
+    text-align:center;
+
+}
+
+.user-menu a:hover{
+
+    background:#1c2538;
+
+    color:#A287FE;
+
+}
+
+.user-menu a:hover i{
+
+    color:#A287FE;
+
+}
+
+.user-menu a:last-child{
+
+    border-top:1px solid #2b3550;
+
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   Category button (trigger)
+   ========================================================================== */
+.categories {
+  position: relative;
+}
+
+.category-btn {
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: var(--text-main);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  height: 64px;
+}
+
+.category-btn i.fa-angle-down { font-size: 11px; transition: transform .2s ease; }
+
+.categories:hover .category-btn { color: var(--accent-green); }
+.categories:hover .category-btn i { color: var(--accent-green); }
+.categories:hover .category-btn i.fa-angle-down { transform: rotate(180deg); }
+
+/* ==========================================================================
+   Mega Menu — column of main categories (right side)
+   ========================================================================== */
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 280px;
+  background: var(--bg-menu);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 25px 50px rgba(0,0,0,.55);
+  padding: 8px 0;
+}
+
+.categories:hover .mega-menu { display: block; }
+
+.mega-item { position: static; } /* dropdown positions relative to .mega-menu, not this */
+
+.mega-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 13px 22px;
+  font-size: 14px;
+  color: var(--text-main);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.mega-title i { font-size: 11px; color: var(--text-muted); }
+
+.mega-item:hover > .mega-title,
+.mega-title.active {
+  background: var(--bg-hover);
+  color: var(--accent-green);
+}
+
+.mega-item:hover > .mega-title i,
+.mega-title.active i { color: var(--accent-green); }
+
+/* ==========================================================================
+   Mega Dropdown — the panel that opens to the LEFT of the category list
+   ========================================================================== */
+.mega-dropdown {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 100%;   /* sits immediately to the left of the category column */
+  bottom: 0;
+  min-height: 100%;
+  background: var(--bg-menu);
+  border-radius: 12px 0 0 12px;
+  box-shadow: -12px 0 35px rgba(0,0,0,.45);
+  padding: 28px 32px;
+  gap: 50px;
+}
+
+.mega-item:hover .mega-dropdown { display: flex; }
+
+.mega-section { min-width: 175px; }
+
+.mega-section h4 {
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mega-section h4 a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.mega-section h4 a i { font-size: 11px; color: var(--text-muted); }
+.mega-section h4 a:hover { color: var(--accent-green); }
+
+.mega-brands {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.mega-brands a {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  transition: color .15s ease;
+}
+
+.mega-brands a:hover { color: var(--accent-green); }
+
+/* optional small green tick used on some items in the reference image
+   e.g. <a href="#" class="tag">لوازم جانبی گوشی و تبلت</a> */
+.mega-title .tag,
+.mega-section h4 a.tag {
+  position: relative;
+  padding-right: 12px;
+}
+.mega-title .tag::before,
+.mega-section h4 a.tag::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 3px;
+  background: var(--accent-green);
+  border-radius: 2px;
+}
+
+
+.image_header{
+    width:100%;
+}
+
+.user-section{
+    margin-right:510px;
+    color:white;
+}
+
+.user-section a{
+    color:white;
+    text-decoration-line:none;
+}
+.user-section a:hover {
+  color: #9d7efd;
+}
+
+
+/*==========================*/
+/*=======  list type ========*/
+/*===========================*/
+
+.cat-slider-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-color: #000717;
+        padding: 55px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: 'Vazirmatn', Tahoma, sans-serif;
+        margin-top: -9px;
+    }
+
+    /* دکمه‌های فلش */
+.cat-arrow {
+    background: none;
+    border: none;
+    color: #8a8a8e;
+    font-size: 22px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transition: color 0.2s ease;
+    z-index: 2;
+}
+
+.cat-arrow:hover {
+    color: #ffffff;
+}
+
+ /* جداکننده عمودی سمت راست، دقیقا مثل عکس */
+.cat-arrow-right {
+    position: relative;
+    margin-left: 6px;
+}
+
+.cat-arrow-right::after {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60px;
+    background-color: #000717;
+}
+
+/* نوار قابل اسکرول دسته‌ها */
+.cat-slider-track {
+    display: flex;
+    flex-direction: row;
+    gap: 55px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    flex: 1;
+    padding: 0 60px;
+    scrollbar-width: none; /* فایرفاکس */
+    -ms-overflow-style: none;
+}
+
+.cat-slider-track::-webkit-scrollbar {
+    display: none; /* کروم / سافاری */
+}
+
+.cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    text-decoration: none;
+    flex-shrink: 0;
+    min-width: 70px;
+    cursor: pointer;
+}
+
+.cat-icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.cat-icon-box i {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.cat-name {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.cat-item:hover .cat-icon-box,
+.cat-item:hover .cat-name {
+    color: #A287FE; /* رنگ هاور دلخواه، می‌تونی حذف/تغییر بدی */
+}
+
+@media (max-width: 768px) {
+    .cat-slider-track {
+        gap: 30px;
+    }
+}
+

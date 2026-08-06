@@ -1,0 +1,49 @@
+{% extends "auth_base.html" %}
+
+
+
+{% block title %}
+    تایید شماره موبایل | NovaTech
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+    <h1 class="auth-title">تایید شماره موبایل</h1>
+
+    <p class="auth-description">کد تایید برای شماره
+        <br>
+        <strong>{{ phone }}</strong>
+        ارسال شد.
+    </p>
+
+
+
+
+    <form method="post" class="auth-form">
+        {% csrf_token %}
+        <div class="input-group">
+            <i class="fa-solid fa-key"></i>
+
+            <div class="input-group">
+                <i class="fa-solid fa-key"></i>
+                {{ form.code }}
+            </div>
+
+            {% if form.code.errors %}
+
+                <div class="error-message">
+                    {{ form.code.errors }}
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <button class="auth-btn">تایید کد</button>
+
+    </form>
+{% endblock %}

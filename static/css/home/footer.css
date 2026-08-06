@@ -1,0 +1,294 @@
+/* ========================================
+   متغیرهای رنگی
+   هرجا خواستی رنگ‌بندی رو عوض کنی، فقط همین بخش رو ویرایش کن
+======================================== */
+:root {
+  --page-bg: #000717;
+  --footer-bg: #000717;
+
+  /* گرادینت باکس خبرنامه؛ رنگش از لوگوی خودت (بنفش/سرمه‌ای) گرفته شده */
+  --newsletter-gradient-start: #8b5cf6;
+  --newsletter-gradient-end: #4c3ac9;
+  --newsletter-radius: 20px;
+  --newsletter-text: #ffffff;
+
+  --input-bg: #ffffff;
+  --input-text: #1a1a1a;
+  --input-placeholder: #9a9a9a;
+
+  --btn-bg: #0d1424;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #161f36;
+
+  --heading-color: #ffffff;
+  --link-color: #9aa2b5;
+  --link-hover-color: #ffffff;
+
+  --desc-color: #9aa2b5;
+
+  --social-bg: #1c2438;
+  --social-icon: #c9cdd6;
+  --social-hover-bg: #2a3350;
+
+  --divider-color: #1c2438;
+  --bottom-text-color: #7c8398;
+
+  --font-main: 'Vazirmatn', Tahoma, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--page-bg);
+}
+
+/* ========================================
+   کانتینر اصلی فوتر
+======================================== */
+.site-footer {
+  background: var(--footer-bg);
+  padding: 40px 20px 24px;
+}
+
+.footer-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   باکس خبرنامه
+======================================== */
+.newsletter-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: linear-gradient(120deg, var(--newsletter-gradient-start), var(--newsletter-gradient-end));
+  border-radius: var(--newsletter-radius);
+  padding: 32px 36px;
+  margin-bottom: 48px;
+}
+
+.newsletter-box__text h3 {
+  color: var(--newsletter-text);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+.newsletter-box__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.newsletter-box__form input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  background: var(--input-bg);
+  color: var(--input-text);
+  text-align: right;
+}
+
+.newsletter-box__form input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.newsletter-box__form input:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.newsletter-box__form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.newsletter-box__form button:hover {
+  background: var(--btn-hover-bg);
+}
+
+/* ========================================
+   ستون‌های فوتر
+======================================== */
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 0.8fr;
+  gap: 30px;
+  margin-bottom: 36px;
+}
+
+.footer-col h4 {
+  color: var(--heading-color);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer-col ul a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.15s ease;
+}
+
+.footer-col ul a:hover {
+  color: var(--link-hover-color);
+}
+
+/* ستون برند */
+.footer-logo {
+  height: 34px;
+  width: auto;
+  margin-bottom: 14px;
+}
+
+.footer-brand__desc {
+  color: var(--desc-color);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+  max-width: 280px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--social-bg);
+  color: var(--social-icon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.footer-social a:hover {
+  background: var(--social-hover-bg);
+}
+
+/* ستون نماد اعتماد */
+.footer-col--trust {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.enamad-badge {
+  display: inline-block;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.enamad-badge img {
+  display: block;
+  width: 90px;
+  height: auto;
+}
+
+/* ========================================
+   خط پایین فوتر
+======================================== */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--divider-color);
+}
+
+.footer-bottom p {
+  color: var(--bottom-text-color);
+  font-size: 12.5px;
+}
+
+.footer-bottom__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-bottom__links a {
+  color: var(--bottom-text-color);
+  text-decoration: none;
+  font-size: 12.5px;
+}
+
+.footer-bottom__links a:hover {
+  color: var(--link-hover-color);
+}
+
+.footer-bottom__links span {
+  color: var(--bottom-text-color);
+}
+
+/* ========================================
+   واکنش‌گرا (ریسپانسیو)
+======================================== */
+@media (max-width: 1000px) {
+  .footer-columns {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+  }
+
+  .footer-col--brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .newsletter-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .newsletter-box__form {
+    max-width: 100%;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
